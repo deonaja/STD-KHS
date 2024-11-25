@@ -55,4 +55,5 @@ int main()
         }
     }
     cout << "BYE BYE" << endl;
+    return 0;
 }
