@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1729774865 source:d:\kuliahan banget\semester 3 masa ga ip 4 lagi\std khs\tp\tp 6\main.cpp
+	<iostream>
+	"DLL.h"
+
+1729357280 d:\kuliahan banget\semester 3 masa ga ip 4 lagi\std khs\tp\tp 6\dll.h
+	<iostream>
+
+1729432875 source:d:\kuliahan banget\semester 3 masa ga ip 4 lagi\std khs\tp\tp 6\dll.cpp
+	"DLL.h"
+	<iostream>
+

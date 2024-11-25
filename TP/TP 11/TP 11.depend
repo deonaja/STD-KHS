@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1732349619 source:d:\kuliahan banget\semester 3 masa ga ip 4 lagi\std khs\tp\tp 11\main.cpp
+	<iostream>
+	"graph.h"
+
+1732350040 source:d:\kuliahan banget\semester 3 masa ga ip 4 lagi\std khs\tp\tp 11\graph.cpp
+	"graph.h"
+
+1732349613 d:\kuliahan banget\semester 3 masa ga ip 4 lagi\std khs\tp\tp 11\graph.h
+	<iostream>
+

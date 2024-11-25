@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1727932779 source:d:\tp_mod_03_made_1030323\province.cpp
+	"Header.h"
+	<iostream>
+
+1727932768 d:\tp_mod_03_made_1030323\header.h
+	<iostream>
+
+1727932830 source:d:\tp_mod_03_made_1030323\main.cpp
+	<iostream>
+	"Header.h"
+

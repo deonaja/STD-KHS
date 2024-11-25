@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1728233362 source:d:\kuliahan banget\semester 3 masa ga ip 4 lagi\std khs\tp\tp 4\list.cpp
+	<iostream>
+	"list.h"
+
+1728233366 d:\kuliahan banget\semester 3 masa ga ip 4 lagi\std khs\tp\tp 4\list.h
+	<iostream>
+
+1728233400 source:d:\kuliahan banget\semester 3 masa ga ip 4 lagi\std khs\tp\tp 4\main.cpp
+	<iostream>
+	"list.h"
+

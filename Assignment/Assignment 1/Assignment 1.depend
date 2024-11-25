@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1731062667 source:d:\kuliahan banget\semester 3 masa ga ip 4 lagi\std khs\assignment\assignment 1\main.cpp
+	<iostream>
+	"queue_vaksinasi.h"
+
+1731062738 source:d:\kuliahan banget\semester 3 masa ga ip 4 lagi\std khs\assignment\assignment 1\queue_vaksinasi.cpp
+	"queue_vaksinasi.h"
+
+1731055564 d:\kuliahan banget\semester 3 masa ga ip 4 lagi\std khs\assignment\assignment 1\queue_vaksinasi.h
+	<iostream>
+

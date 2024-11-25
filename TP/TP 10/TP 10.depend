@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1731865675 source:d:\kuliahan banget\semester 3 masa ga ip 4 lagi\std khs\tp\tp 10\main.cpp
+	<iostream>
+	"flight.h"
+
+1731865345 source:d:\kuliahan banget\semester 3 masa ga ip 4 lagi\std khs\tp\tp 10\flight.cpp
+	"flight.h"
+
+1731862767 d:\kuliahan banget\semester 3 masa ga ip 4 lagi\std khs\tp\tp 10\flight.h
+	<iostream>
+

@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1728264358 source:d:\kuliahan banget\semester 3 masa ga ip 4 lagi\std khs\tugas\tugas 2\sll.cpp
+	<iostream>
+	"sll.h"
+
+1728264358 d:\kuliahan banget\semester 3 masa ga ip 4 lagi\std khs\tugas\tugas 2\sll.h
+	<iostream>
+	<string>
+

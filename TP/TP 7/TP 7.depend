@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1729974327 source:d:\kuliahan banget\semester 3 masa ga ip 4 lagi\std khs\tp\tp 7\main.cpp
+	<iostream>
+	"stack.h"
+
+1729974299 d:\kuliahan banget\semester 3 masa ga ip 4 lagi\std khs\tp\tp 7\stack.h
+	<iostream>
+
+1729972159 source:d:\kuliahan banget\semester 3 masa ga ip 4 lagi\std khs\tp\tp 7\stack.cpp
+	"stack.h"
+
