@@ -54,6 +54,22 @@ void menu();
 void insertGudang();
 void insertPenitip();
 void insertRelation(listGudang &lG, adrGudang G, adrPenitip P); //G untuk data parent yang ingin ditambah relasinya; P untuk child yang akan direlasikan ke parent
+void deleteGudang();
+void deletePenitip();
+void deleteRelasi(listGudang &lG, adrGudang G); // G untuk data parent yang ingin dihapus
+void findGudang();
+void findPenitip();
+void findRelasi(listGudang &lG, adrPenitip P); //  P untuk mencari relasi dari parent
+void showAllGudang();
+void showAllPenitip();
+void showPenitipDariGudangTertentu();
+void showRelasiGudang();
+void showRelasiPenitip(listPenitip lP, listGudang lG);
+void showGudangPenitip(listGudang lG, adrPenitip P);
+void hitungRelasiGudang(listGudang lG);
+void hitungRelasiPenitipTertentu();
+void hitungPenitipTakBerelasi();
+void editSlotGudang(listGudang &lG, adrPenitip P, adrPenitip newP); // P untuk relasi child yang ingin diganti; newP untuk tujuan baru relasi yang diganti
 
 
 #endif // TUBES_H_INCLUDED
