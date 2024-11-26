@@ -51,7 +51,7 @@ struct listGudang {
 };
 
 void menu();
-void insertGudang();
+void insertGudang(listGudang &lG, adrGudang G);
 void insertPenitip();
 void insertRelation(listGudang &lG, adrGudang G, adrPenitip P); //G untuk data parent yang ingin ditambah relasinya; P untuk child yang akan direlasikan ke parent
 void deleteGudang();
