@@ -1,10 +1,10 @@
 #include <tubes.h>
 
-void insertGudang(listGudang &lG, infotypeG x){
+void insertGudang(listGudang &lG, int nomor_gudang, int slot_tersedia_gudang){
     adrGudang G;
     G = new elemenGudang;
-    G->info.nomor_gudang = x.nomor_gudang;
-    G->info.slot_tersedia_gudang = x.slot_tersedia_gudang;
+    G->info.nomor_gudang = nomor_gudang;
+    G->info.slot_tersedia_gudang = slot_tersedia_gudang;
     G->next = NULL;
     if (lG.first==NULL){
         lG.first = G;
