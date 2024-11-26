@@ -7,6 +7,7 @@ using namespace std;
 typedef struct elemenGudang* adrGudang;
 typedef struct elemenPenitip* adrPenitip;
 typedef struct elemenRelasi* adrRelasi;
+typedef struct gudang infotypeG;
 
 struct gudang {
     int nomor_gudang;
