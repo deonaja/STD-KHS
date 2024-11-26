@@ -1,7 +1,7 @@
 #include <tubes.h>
 
-void insertGudang(listGudang &lG, adrGudang G){
-    infotypeG x;
+void insertGudang(listGudang &lG, infotypeG x){
+    adrGudang G;
     G = new elemenGudang;
     G->info.nomor_gudang = x.nomor_gudang;
     G->info.slot_tersedia_gudang = x.slot_tersedia_gudang;
