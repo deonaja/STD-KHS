@@ -37,10 +37,6 @@ struct elemenPenitip {
     adrPenitip prev;
 };
 
-struct listRelasi {
-    adrRelasi first;
-};
-
 struct listPenitip {
     adrPenitip first;
     adrPenitip last;
@@ -53,14 +49,15 @@ struct listGudang {
 void menu();
 adrGudang createNewGudang(gudang x);
 adrPenitip createNewPenitip(penitip x);
+adrRelasi createNewRelasi(adrPenitip P);
 void insertGudang(listGudang &lG, int nomor_gudang, int slot_tersedia_gudang);
 void insertPenitip();
-void insertRelation(listGudang &lG, adrGudang G, adrPenitip P); //G untuk data parent yang ingin ditambah relasinya; P untuk child yang akan direlasikan ke parent
+void insertRelation(adrGudang G, adrPenitip P); //G untuk data parent yang ingin ditambah relasinya; P untuk child yang akan direlasikan ke parent
 void deleteGudang();
 void deletePenitip();
 void deleteRelasi(listGudang &lG, adrGudang G); // G untuk data parent yang ingin dihapus
-void findGudang();
-void findPenitip();
+adrGudang findGudang();
+adrPenitip findPenitip();
 void findRelasi(listGudang &lG, adrPenitip P); //  P untuk mencari relasi dari parent
 void showAllGudang();
 void showAllPenitip();

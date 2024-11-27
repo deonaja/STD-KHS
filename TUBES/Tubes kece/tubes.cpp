@@ -2,13 +2,25 @@
 
 adrGudang createNewGudang(gudang x) {
     adrGudang G = new elemenGudang;
-    G->info.nomor_gudang = x.nomor_gudang;
-    G->info.slot_tersedia_gudang = x.slot_tersedia_gudang;
+    G->info = x;
     G->next = NULL;
     G->nextRelasi = NULL;
     return G;
 }
-adrPenitip createNewPenitip(penitip x);
+adrPenitip createNewPenitip(penitip x) {
+    adrPenitip P = new elemenPenitip;
+    P->info = x;
+    P->next = NULL;
+    P->prev = NULL;
+    return P;
+}
+
+adrRelasi createNewRelasi(adrPenitip P){
+    adrRelasi R = new elemenRelasi;
+    R->nextPenitip = P;
+    R->nextRelasi = NULL;
+    return R;
+}
 
 void insertGudang(listGudang &lG, adrGudang G){
     if (lG.first==NULL){
@@ -24,22 +36,19 @@ void insertGudang(listGudang &lG, adrGudang G){
 }
 
 void insertPenitip();
-void insertRelation(listGudang &lG, adrGudang G, adrPenitip P) {
-
+void insertRelation(adrGudang G, adrPenitip P) {
+    adrGudang findG = findGudang();
+    adrPenitip findP = findPenitip();
+    if (findG != NULL && findP != NULL) {
+        adrRelasi R = findG->nextRelasi;
+        if (R == NULL) {
+            R->nextPenitip = P;
+        } else {
+            adrRelasi Q = R, S = createNewRelasi(P);
+            while (Q->nextRelasi != NULL) {
+                Q = Q->nextRelasi;
+            }
+            Q->nextRelasi = S;
+        }
+    }
 } //G untuk data parent yang ingin ditambah relasinya; P untuk child yang akan direlasikan ke parent
-void deleteGudang();
-void deletePenitip();
-void deleteRelasi(listGudang &lG, adrGudang G); // G untuk data parent yang ingin dihapus
-void findGudang();
-void findPenitip();
-void findRelasi(listGudang &lG, adrPenitip P); //  P untuk mencari relasi dari parent
-void showAllGudang();
-void showAllPenitip();
-void showPenitipDariGudangTertentu();
-void showRelasiGudang();
-void showRelasiPenitip(listPenitip lP, listGudang lG);
-void showGudangPenitip(listGudang lG, adrPenitip P);
-void hitungRelasiGudang(listGudang lG);
-void hitungRelasiPenitipTertentu();
-void hitungPenitipTakBerelasi();
-void editSlotGudang(listGudang &lG, adrPenitip P, adrPenitip newP); // P untuk relasi child yang ingin diganti; newP untuk tujuan baru relasi yang diganti
