@@ -7,7 +7,6 @@ using namespace std;
 typedef struct elemenGudang* adrGudang;
 typedef struct elemenPenitip* adrPenitip;
 typedef struct elemenRelasi* adrRelasi;
-typedef struct gudang infotypeG;
 
 struct gudang {
     int nomor_gudang;
@@ -18,7 +17,7 @@ struct penitip {
     string nama_penitip;
     string tanggal_masuk_barang;
     int jumlah_barang;
-    string[] info_barang;
+    string info_barang;
 };
 
 struct elemenRelasi {
@@ -52,6 +51,8 @@ struct listGudang {
 };
 
 void menu();
+adrGudang createNewGudang(gudang x);
+adrPenitip createNewPenitip(penitip x);
 void insertGudang(listGudang &lG, int nomor_gudang, int slot_tersedia_gudang);
 void insertPenitip();
 void insertRelation(listGudang &lG, adrGudang G, adrPenitip P); //G untuk data parent yang ingin ditambah relasinya; P untuk child yang akan direlasikan ke parent
