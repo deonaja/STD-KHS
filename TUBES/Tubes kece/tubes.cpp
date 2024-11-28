@@ -42,7 +42,7 @@ void insertPenitip(listPenitip &lP, adrPenitip P){
             lP.last = P;
         } else {
             lP.last->next = P;
-            p->prev = lP.last;
+            P->prev = lP.last;
             lP.last = P;
         }
     }
