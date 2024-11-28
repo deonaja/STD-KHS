@@ -46,13 +46,14 @@ struct listGudang {
     adrGudang first;
 };
 
-void menu();
+void menu(listGudang lG, listPenitip lP);
+void mainMenu(char &n);
 adrGudang createNewGudang(gudang x);
 adrPenitip createNewPenitip(penitip x);
 adrRelasi createNewRelasi(adrPenitip P);
 void insertGudang(listGudang &lG, int nomor_gudang, int slot_tersedia_gudang);
 void insertPenitip(listPenitip &lP, adrPenitip P);
-void insertRelation(adrGudang G, adrPenitip P); //G untuk data parent yang ingin ditambah relasinya; P untuk child yang akan direlasikan ke parent
+void insertRelation(listPenitip lP, listGudang lG, adrGudang G, adrPenitip P); //G untuk data parent yang ingin ditambah relasinya; P untuk child yang akan direlasikan ke parent
 void deleteGudang();
 void deletePenitip(listPenitip &lP, string nama, string tanggal);
 void deleteRelasi(listGudang &lG, adrGudang G); // G untuk data parent yang ingin dihapus

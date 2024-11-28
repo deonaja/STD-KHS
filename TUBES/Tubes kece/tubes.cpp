@@ -1,5 +1,34 @@
 #include "tubes.h"
 
+void menu(listGudang lG, listPenitip lP){
+    bool status = false;
+    while (!status) {
+        char menu;
+        mainMenu(menu);
+        if (menu == 1) {
+
+        } else if (menu == 2){
+
+        } else if (menu == 3){
+
+        } else if (menu == 4){
+            status = true;
+        } else {
+            cout << "INPUT INVALID" << endl;
+        }
+
+    }
+}
+
+void mainMenu(char &n) {
+    cout << "==========MAIN MENU==========" << endl;
+    cout << "1.DATA GUDANG" << endl;
+    cout << "2.DATA PENITIP" << endl;
+    cout << "3.DATA RELASI" << endl;
+    cout << "4.EXIT" << endl;
+    cin >> n;
+}
+
 adrGudang createNewGudang(gudang x) {
     adrGudang G = new elemenGudang;
     G->info = x;
@@ -48,9 +77,9 @@ void insertPenitip(listPenitip &lP, adrPenitip P){
     }
 }
 
-void insertRelation(adrGudang G, adrPenitip P) {
+void insertRelation(listPenitip lP, listGudang lG, adrGudang G, adrPenitip P) {
     adrGudang findG = findGudang();
-    adrPenitip findP = findPenitip();
+    adrPenitip findP = findPenitip(lG,);
     if (findG != NULL && findP != NULL) {
         adrRelasi R = findG->nextRelasi;
         if (R == NULL) {
