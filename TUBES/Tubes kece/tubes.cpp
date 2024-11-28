@@ -94,7 +94,31 @@ void insertRelation(listPenitip lP, listGudang lG, adrGudang G, adrPenitip P) {
     }
 } //G untuk data parent yang ingin ditambah relasinya; P untuk child yang akan direlasikan ke parent
 
-void deleteGudang();
+void deleteGudang(listGudang &lG, adrGudang G){
+    if(lG.first == NULL){
+        cout<<"list gudang kosong"<<endl;
+    }else if(G == lG.first){
+        lG.first = G->next;
+        G->next = NULL;
+    }else{
+        adrGudang Q;
+        adrGudang P;
+        P = NULL;
+        Q = lG.first;
+        while(Q!=NULL && Q!=G){
+            P = Q;
+            Q = Q->next;
+        }
+        if (Q == NULL){
+            cout<<"gudang tidak ditemukan dalam list"<<endl;
+        } else if (Q->next == NULL){
+            P->next = NULL;
+        }else{
+            P->next = Q->next;
+            Q->next = NULL;
+        }
+    }
+}
 
 void deletePenitip(listPenitip &lP, string nama, string tanggal){
     adrPenitip p = findPenitip(lP, nama, tanggal);
