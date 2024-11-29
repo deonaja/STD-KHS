@@ -206,7 +206,19 @@ adrPenitip findPenitip(listPenitip &lP, string nama, string tanggal){
     return NULL; // Elemen tidak ditemukan
 }
 
-void findRelasi(listGudang &lG, adrPenitip P); //  P untuk mencari relasi dari parent
+void findRelasi(listGudang &lG, adrPenitip P) {
+    adrGudang G = lG.first;
+    while (G != NULL) {
+        adrRelasi R = G->nextRelasi;
+        while (R != NULL) {
+            if (R->nextPenitip == P) {
+                cout << "================" << endl;
+            }
+            R = R->nextRelasi;
+        }
+        G = G->next;
+    }
+} //  P untuk mencari relasi dari parent
 void showAllGudang();
 void showAllPenitip();
 void showPenitipDariGudangTertentu();
