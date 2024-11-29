@@ -54,10 +54,10 @@ adrRelasi createNewRelasi(adrPenitip P);
 void insertGudang(listGudang &lG, int nomor_gudang, int slot_tersedia_gudang);
 void insertPenitip(listPenitip &lP, adrPenitip P);
 void insertRelation(listPenitip lP, listGudang lG, adrGudang G, adrPenitip P); //G untuk data parent yang ingin ditambah relasinya; P untuk child yang akan direlasikan ke parent
-void deleteGudang();
+void deleteGudang(listGudang &lG, adrGudang G);
 void deletePenitip(listPenitip &lP, string nama, string tanggal);
 void deleteRelasi(listGudang &lG, adrGudang G); // G untuk data parent yang ingin dihapus
-adrGudang findGudang();
+adrGudang findGudang(listGudang &lG);
 adrPenitip findPenitip(listPenitip &lP, string nama, string tanggal);
 void findRelasi(listGudang &lG, adrPenitip P); //  P untuk mencari relasi dari parent
 void showAllGudang();
