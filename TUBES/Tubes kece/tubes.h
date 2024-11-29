@@ -66,7 +66,7 @@ void deleteRelasi(listGudang &lG, adrGudang G); // G untuk data parent yang ingi
 adrGudang findGudang(listGudang &lG, int nomor_gudang);
 adrPenitip findPenitip(listPenitip &lP, string nama, string tanggal);
 void findRelasi(listGudang &lG, adrPenitip P); //  P untuk mencari relasi dari parent
-void showAllGudang();
+void showAllGudang(listGudang lG);
 void showAllPenitip();
 void showPenitipDariGudangTertentu();
 void showRelasiGudang();
