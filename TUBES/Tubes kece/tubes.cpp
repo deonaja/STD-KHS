@@ -156,8 +156,29 @@ void deletePenitip(listPenitip &lP, string nama, string tanggal){
 
 void deleteRelasi(listGudang &lG, adrGudang G); // G untuk data parent yang ingin dihapus
 
-adrGudang findGudang();
-
+adrGudang findGudang(listGudang &lG){
+    if(lG.first == NULL){
+        cout<<"list gudang kosong, gudang tidak ditemukan"<<endl;
+        return NULL;
+    }else{
+        int nomor_gudang;
+        cout<<"masukkan nomor gudang yang ingin dicari: "<<endl;
+        cin>> nomor_gudang;
+        adrGudang G;
+        G = lG.first;
+        while (G != NULL){
+            if(G->info.nomor_gudang == nomor_gudang){
+                cout<<"gudang ditemukan! "<<endl;
+                cout<<"nomor gudang: "<<G->info.nomor_gudang<<endl;
+                cout<<"slot tersedia: "<<G->info.slot_tersedia_gudang<<endl;
+                return G;
+            }
+            G = G->next;
+        }
+        cout<<"gudang dengan nomor "<<nomor_gudang<<" tidak ditemukan!"<<endl;
+        return NULL;
+    }
+}
 adrPenitip findPenitip(listPenitip &lP, string nama, string tanggal){
     adrPenitip p = lP.first;
 
