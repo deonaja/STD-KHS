@@ -48,6 +48,14 @@ void menu_1() {
 
 }
 
+void menu_2() {
+
+}
+
+void menu_3() {
+
+}
+
 void menuGudang(char &n) {
     cout << "============DATA GUDANG============" << endl;
     cout << "1." << endl;
@@ -211,8 +219,14 @@ void deleteRelasi(listGudang &lG, adrPenitip P) {
         while (G != NULL) {
             adrRelasi R = G->nextRelasi;
             while (R != NULL) {
+                adrRelasi tempR;
                 if (R->nextPenitip == P) {
                     if (G->nextRelasi == R) {
+                        tempR = R;
+                        R = R->nextRelasi;
+                    } else if (R->nextRelasi = NULL) {
+
+                    } else {
 
                     }
                 }
@@ -221,7 +235,7 @@ void deleteRelasi(listGudang &lG, adrPenitip P) {
             G = G->next;
         }
     }
-}
+} // Belum Selesai.
 
 adrGudang findGudang(listGudang &lG, int nomor_gudang){
     if(lG.first == NULL){
