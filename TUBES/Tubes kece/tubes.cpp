@@ -2,21 +2,36 @@
 
 void menu(listGudang lG, listPenitip lP){
     bool status = false;
+    char menu;
+    string Back;
+    mainMenu(menu);
     while (!status) {
-        char menu;
-        mainMenu(menu);
-        if (menu == 1) {
+        cout << "a" << endl;
+        if (menu == '1') {
 
-        } else if (menu == 2){
+        } else if (menu == '2'){
 
-        } else if (menu == 3){
+        } else if (menu == '3'){
 
-        } else if (menu == 4){
+        } else if (menu == '0'){
             status = true;
         } else {
             cout << "INPUT INVALID" << endl;
         }
-
+        Back = "";
+        if (menu >= '0' && menu <= '3') {
+            while (Back != "Y" && Back != "N" && !status) {
+                cout << "Kembali ke menu utama? (Y/N) : ";
+                cin >> Back;
+                if (Back == "Y") {
+                    mainMenu(menu);
+                } else if (Back == "N") {
+                    status = false;
+                }
+            }
+        } else {
+            mainMenu(menu);
+        }
     }
 }
 
@@ -25,7 +40,7 @@ void mainMenu(char &n) {
     cout << "1.DATA GUDANG" << endl;
     cout << "2.DATA PENITIP" << endl;
     cout << "3.DATA RELASI" << endl;
-    cout << "4.EXIT" << endl;
+    cout << "0.EXIT" << endl;
     cin >> n;
 }
 
@@ -78,10 +93,8 @@ void insertPenitip(listPenitip &lP, adrPenitip P){
 }
 
 void insertRelation(listPenitip lP, listGudang lG, adrGudang G, adrPenitip P) {
-    adrGudang findG = findGudang();
-    adrPenitip findP = findPenitip(lG,);
-    if (findG != NULL && findP != NULL) {
-        adrRelasi R = findG->nextRelasi;
+    if (G != NULL && P != NULL) {
+        adrRelasi R = G->nextRelasi;
         if (R == NULL) {
             R->nextPenitip = P;
         } else {
