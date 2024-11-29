@@ -107,7 +107,31 @@ void insertRelation(listPenitip lP, listGudang lG, adrGudang G, adrPenitip P) {
     }
 } //G untuk data parent yang ingin ditambah relasinya; P untuk child yang akan direlasikan ke parent
 
-void deleteGudang();
+void deleteGudang(listGudang &lG, adrGudang G){
+    if(lG.first == NULL){
+        cout<<"list gudang kosong"<<endl;
+    }else if(G == lG.first){
+        lG.first = G->next;
+        G->next = NULL;
+    }else{
+        adrGudang Q;
+        adrGudang P;
+        P = NULL;
+        Q = lG.first;
+        while(Q!=NULL && Q!=G){
+            P = Q;
+            Q = Q->next;
+        }
+        if (Q == NULL){
+            cout<<"gudang tidak ditemukan dalam list"<<endl;
+        } else if (Q->next == NULL){
+            P->next = NULL;
+        }else{
+            P->next = Q->next;
+            Q->next = NULL;
+        }
+    }
+}
 
 void deletePenitip(listPenitip &lP, string nama, string tanggal){
     adrPenitip p = findPenitip(lP, nama, tanggal);
@@ -145,8 +169,29 @@ void deletePenitip(listPenitip &lP, string nama, string tanggal){
 
 void deleteRelasi(listGudang &lG, adrGudang G); // G untuk data parent yang ingin dihapus
 
-adrGudang findGudang();
-
+adrGudang findGudang(listGudang &lG){
+    if(lG.first == NULL){
+        cout<<"list gudang kosong, gudang tidak ditemukan"<<endl;
+        return NULL;
+    }else{
+        int nomor_gudang;
+        cout<<"masukkan nomor gudang yang ingin dicari: "<<endl;
+        cin>> nomor_gudang;
+        adrGudang G;
+        G = lG.first;
+        while (G != NULL){
+            if(G->info.nomor_gudang == nomor_gudang){
+                cout<<"gudang ditemukan! "<<endl;
+                cout<<"nomor gudang: "<<G->info.nomor_gudang<<endl;
+                cout<<"slot tersedia: "<<G->info.slot_tersedia_gudang<<endl;
+                return G;
+            }
+            G = G->next;
+        }
+        cout<<"gudang dengan nomor "<<nomor_gudang<<" tidak ditemukan!"<<endl;
+        return NULL;
+    }
+}
 adrPenitip findPenitip(listPenitip &lP, string nama, string tanggal){
     adrPenitip p = lP.first;
 
