@@ -249,7 +249,19 @@ void findRelasi(listGudang &lG, adrPenitip P) {
         G = G->next;
     }
 } //  P untuk mencari relasi dari parent
-void showAllGudang();
+void showAllGudang(listGudang lG){
+    if(lG.first == NULL){
+        cout<<"list gudang kosong! "<<endl;
+    }else{
+        adrGudang G;
+        G = lG.first;
+        while(G!=NULL){
+            cout<<"nomor gudang: "<<G->info.nomor_gudang<<endl;
+            cout<<"slot tersedia gudang: "<<G->info.slot_tersedia_gudang<<endl;
+            G = G->next;
+        }
+    }
+}
 void showAllPenitip();
 void showPenitipDariGudangTertentu();
 void showRelasiGudang();
