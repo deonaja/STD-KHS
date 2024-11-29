@@ -203,7 +203,25 @@ void deletePenitip(listPenitip &lP, string nama, string tanggal){
     cout << "Data dengan nama \"" << nama << "\" dan tanggal \"" << tanggal << "\" berhasil dihapus." << endl;
 }
 
-void deleteRelasi(listGudang &lG, adrGudang G); // G untuk data parent yang ingin dihapus
+void deleteRelasi(listGudang &lG, adrPenitip P) {
+    if (lG.first == NULL) {
+        cout << "Tidak Ada Gudang" << endl;
+    } else {
+        adrGudang G = lG.first;
+        while (G != NULL) {
+            adrRelasi R = G->nextRelasi;
+            while (R != NULL) {
+                if (R->nextPenitip == P) {
+                    if (G->nextRelasi == R) {
+
+                    }
+                }
+                R = R->nextRelasi;
+            }
+            G = G->next;
+        }
+    }
+}
 
 adrGudang findGudang(listGudang &lG, int nomor_gudang){
     if(lG.first == NULL){
