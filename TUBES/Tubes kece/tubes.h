@@ -48,6 +48,12 @@ struct listGudang {
 
 void menu(listGudang lG, listPenitip lP);
 void mainMenu(char &n);
+void menu_1();
+void menu_2();
+void menu_3();
+void menuGudang(char &n);
+void menuPenitip(char &n);
+void menuRelasi(char &n);
 adrGudang createNewGudang(gudang x);
 adrPenitip createNewPenitip(penitip x);
 adrRelasi createNewRelasi(adrPenitip P);

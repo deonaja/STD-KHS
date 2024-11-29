@@ -8,11 +8,11 @@ void menu(listGudang lG, listPenitip lP){
     while (!status) {
         cout << "a" << endl;
         if (menu == '1') {
-
+            menu_1();
         } else if (menu == '2'){
-
+            menu_2();
         } else if (menu == '3'){
-
+            menu_3();
         } else if (menu == '0'){
             status = true;
         } else {
@@ -41,6 +41,42 @@ void mainMenu(char &n) {
     cout << "2.DATA PENITIP" << endl;
     cout << "3.DATA RELASI" << endl;
     cout << "0.EXIT" << endl;
+    cin >> n;
+}
+
+void menu_1() {
+
+}
+
+void menuGudang(char &n) {
+    cout << "============DATA GUDANG============" << endl;
+    cout << "1." << endl;
+    cout << "1." << endl;
+    cout << "1." << endl;
+    cout << "1." << endl;
+    cout << "1." << endl;
+    cout << "1." << endl;
+    cin >> n;
+}
+
+void menuPenitip(char &n) {
+    cout << "============DATA PENITIP============" << endl;
+    cout << "1." << endl;
+    cout << "1." << endl;
+    cout << "1." << endl;
+    cout << "1." << endl;
+    cout << "1." << endl;
+    cout << "1." << endl;
+    cin >> n;
+}
+void menuRelasi(char &n) {
+    cout << "============DATA RELASI============" << endl;
+    cout << "1." << endl;
+    cout << "1." << endl;
+    cout << "1." << endl;
+    cout << "1." << endl;
+    cout << "1." << endl;
+    cout << "1." << endl;
     cin >> n;
 }
 
