@@ -10,9 +10,9 @@ void menu(listGudang lG, listPenitip lP){
         if (menu == '1') {
             menu_1();
         } else if (menu == '2'){
-            menu_2();
+            //menu_2();
         } else if (menu == '3'){
-            menu_3();
+            //menu_3();
         } else if (menu == '0'){
             status = true;
         } else {
