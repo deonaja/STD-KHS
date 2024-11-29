@@ -280,7 +280,23 @@ void showAllGudang(listGudang lG){
         }
     }
 }
-void showAllPenitip();
+
+void showAllPenitip(listPenitip lP) {
+    if (lP.first == NULL) {
+        cout << "List penitip kosong!" << endl;
+    } else {
+        adrPenitip P = lP.first;
+        while (P != NULL) {
+            cout << "Nama Penitip         : " << P->info.nama_penitip << endl;
+            cout << "Tanggal Masuk Barang : " << P->info.tanggal_masuk_barang << endl;
+            cout << "Jumlah Barang        : " << P->info.jumlah_barang << endl;
+            cout << "Info Barang          : " << P->info.info_barang << endl;
+            cout << "-----------------------------" << endl;
+            P = P->next;
+        }
+    }
+}
+
 void showPenitipDariGudangTertentu();
 void showRelasiGudang();
 void showRelasiPenitip(listPenitip lP, listGudang lG);
