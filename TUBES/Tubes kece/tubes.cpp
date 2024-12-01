@@ -63,13 +63,15 @@ void mainMenu(char &n) {
 void menu_1(listGudang &lG, listPenitip &lP) {
     char menu;
     bool status = false;
-     while (!status) {
+    while (!status) {
         menuGudang(menu);
         if (menu == '1') {
 
         } else if (menu == '2') {
 
-        } else if (menu == '2') {
+        } else if (menu == '3') {
+
+        } else if (menu == '4') {
 
         } else if (menu == '0') {
             status = true;
