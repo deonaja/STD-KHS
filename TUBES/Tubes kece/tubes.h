@@ -1,6 +1,8 @@
 #ifndef TUBES_H_INCLUDED
 #define TUBES_H_INCLUDED
 #include <iostream>
+#include <cstdlib>
+#include <limits>
 
 using namespace std;
 
@@ -46,11 +48,13 @@ struct listGudang {
     adrGudang first;
 };
 
-void menu(listGudang lG, listPenitip lP);
+void clearScreen();
+void waitForEnter();
+void menu(listGudang &lG, listPenitip &lP);
 void mainMenu(char &n);
-void menu_1();
-void menu_2();
-void menu_3();
+void menu_1(listGudang &lG, listPenitip &lP);
+void menu_2(listGudang &lG, listPenitip &lP);
+void menu_3(listGudang &lG, listPenitip &lP);
 void menuGudang(char &n);
 void menuPenitip(char &n);
 void menuRelasi(char &n);

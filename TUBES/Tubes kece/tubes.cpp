@@ -1,22 +1,35 @@
 #include "tubes.h"
 
-void menu(listGudang lG, listPenitip lP){
+void clearScreen() {
+    system("cls");
+}
+
+void waitForEnter() {
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignore any leftover input
+    std::cin.get(); // Wait for Enter
+}
+
+void menu(listGudang &lG, listPenitip &lP){
     bool status = false;
     char menu;
     string Back;
     mainMenu(menu);
     while (!status) {
-        cout << "a" << endl;
         if (menu == '1') {
-            menu_1();
+            clearScreen();
+            menu_1(lG,lP);
         } else if (menu == '2'){
-            //menu_2();
+            clearScreen();
+            menu_2(lG,lP);
         } else if (menu == '3'){
-            //menu_3();
+            clearScreen();
+            menu_3(lG,lP);
         } else if (menu == '0'){
             status = true;
         } else {
-            cout << "INPUT INVALID" << endl;
+            cout << "\nINPUT INVALID" << endl;
+            waitForEnter();
+            clearScreen();
         }
         Back = "";
         if (menu >= '0' && menu <= '3') {
@@ -24,8 +37,10 @@ void menu(listGudang lG, listPenitip lP){
                 cout << "Kembali ke menu utama? (Y/N) : ";
                 cin >> Back;
                 if (Back == "Y") {
+                    clearScreen();
                     mainMenu(menu);
                 } else if (Back == "N") {
+                    clearScreen();
                     status = false;
                 }
             }
@@ -37,54 +52,76 @@ void menu(listGudang lG, listPenitip lP){
 
 void mainMenu(char &n) {
     cout << "==========MAIN MENU==========" << endl;
-    cout << "1.DATA GUDANG" << endl;
-    cout << "2.DATA PENITIP" << endl;
-    cout << "3.DATA RELASI" << endl;
-    cout << "0.EXIT" << endl;
+    cout << "1.Data Gudang" << endl;
+    cout << "2.Data Penitip" << endl;
+    cout << "3.Data Relasi" << endl;
+    cout << "0.Exit" << endl;
+    cout << "Pilih : ";
     cin >> n;
 }
 
-void menu_1() {
+void menu_1(listGudang &lG, listPenitip &lP) {
+    char menu;
+    bool status = false;
+     while (!status) {
+        menuGudang(menu);
+        if (menu == '1') {
 
-}
+        } else if (menu == '2') {
 
-void menu_2() {
+        } else if (menu == '2') {
 
-}
-
-void menu_3() {
-
+        } else if (menu == '0') {
+            status = true;
+        } else {
+            cout << "\nINPUT INVALID" << endl;
+            waitForEnter();
+            clearScreen();
+        }
+    }
 }
 
 void menuGudang(char &n) {
     cout << "============DATA GUDANG============" << endl;
+    cout << "1.Masukan Data Gudang" << endl;
+    cout << "2.Delete Data Gudang" << endl;
+    cout << "3.Cari Data Gudang" << endl;
+    cout << "4.Tampilkan Data Gudang" << endl;
     cout << "1." << endl;
-    cout << "1." << endl;
-    cout << "1." << endl;
-    cout << "1." << endl;
-    cout << "1." << endl;
-    cout << "1." << endl;
+    cout << "0.Back" << endl;
+    cout << "Pilih : ";
     cin >> n;
+}
+
+void menu_2(listGudang &lG, listPenitip &lP) {
+
 }
 
 void menuPenitip(char &n) {
     cout << "============DATA PENITIP============" << endl;
+    cout << "1.Masukan Data Penitip" << endl;
+    cout << "2.Delete Data Penitip" << endl;
+    cout << "3.Cari Data Penitip" << endl;
+    cout << "4.Tampilkan Data Penitip" << endl;
     cout << "1." << endl;
-    cout << "1." << endl;
-    cout << "1." << endl;
-    cout << "1." << endl;
-    cout << "1." << endl;
-    cout << "1." << endl;
+    cout << "0.Back" << endl;
+    cout << "Pilih : ";
     cin >> n;
 }
+
+void menu_3(listGudang &lG, listPenitip &lP) {
+
+}
+
 void menuRelasi(char &n) {
     cout << "============DATA RELASI============" << endl;
+    cout << "1.Masukan Data Relasi" << endl;
+    cout << "2.Delete Data Relasi" << endl;
+    cout << "3.Cari Data Relasi" << endl;
+    cout << "4.Edit Data Relasi" << endl;
     cout << "1." << endl;
-    cout << "1." << endl;
-    cout << "1." << endl;
-    cout << "1." << endl;
-    cout << "1." << endl;
-    cout << "1." << endl;
+    cout << "0.Back" << endl;
+    cout << "Pilih : ";
     cin >> n;
 }
 
@@ -219,14 +256,13 @@ void deleteRelasi(listGudang &lG, adrPenitip P) {
         while (G != NULL) {
             adrRelasi R = G->nextRelasi;
             while (R != NULL) {
-                adrRelasi tempR;
+                adrRelasi beforeR = R;
+                adrRelasi deleteR;
                 if (R->nextPenitip == P) {
                     if (G->nextRelasi == R) {
-                        tempR = R;
+                        deleteR = R;
                         R = R->nextRelasi;
-                    } else if (R->nextRelasi = NULL) {
-
-                    } else {
+                    } else if (R->nextRelasi == NULL) {
 
                     }
                 }
