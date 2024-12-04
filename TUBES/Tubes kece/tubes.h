@@ -82,7 +82,7 @@ adrPenitip findPenitip(listPenitip &lP, string nama, string tanggal);
 void findRelasi(listGudang &lG, adrPenitip P); //  P untuk mencari relasi dari parent
 void showAllGudang(listGudang lG);
 void showAllPenitip(listPenitip lP);
-void showPenitipDariGudangTertentu();
+void showPenitipDariGudangTertentu(listRelasi lR, adrGudang G);
 void showRelasiGudang();
 void showRelasiPenitip(listPenitip lP, listGudang lG);
 void showGudangPenitip(listGudang lG, adrPenitip P);
