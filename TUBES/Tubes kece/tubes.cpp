@@ -494,7 +494,23 @@ void showAllPenitip(listPenitip lP) {
     }
 }
 
-void showPenitipDariGudangTertentu();
+void showPenitipDariGudangTertentu(listRelasi lR, adrGudang G){
+    if(lR.first == NULL){
+        cout<<"list relasi kosong!"<<endl;
+    }else{
+        adrRelasi R;
+        R = lR.first;
+        while(R!=NULL){
+            if(R->nextGudang == G){
+                cout<<"Nama Penitip         : "<<R->nextPenitip->info.nama_penitip<<endl;
+                cout<<"Tanggal Masuk Barang : "<<R->nextPenitip->info.tanggal_masuk_barang<<endl;
+                cout<<"Jumlah Barang        : "<<R->nextPenitip->info.jumlah_barang<<endl;
+                cout<<"Info Barang          : "<<R->nextPenitip->info.info_barang<<endl;
+            }
+            R = R->nextRelasi;
+        }
+    }
+}
 void showRelasiGudang();
 void showRelasiPenitip(listPenitip lP, listGudang lG);
 void showGudangPenitip(listGudang lG, adrPenitip P);
