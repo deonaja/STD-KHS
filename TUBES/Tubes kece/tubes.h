@@ -25,6 +25,7 @@ struct penitip {
 struct elemenRelasi {
     adrRelasi nextRelasi;
     adrPenitip nextPenitip;
+    adrGudang nextGudang;
 };
 
 struct elemenGudang {
@@ -46,6 +47,10 @@ struct listPenitip {
 
 struct listGudang {
     adrGudang first;
+};
+
+struct listRelasi{
+    adrRelasi first;
 };
 
 void clearScreen();
@@ -78,7 +83,7 @@ adrPenitip findPenitip(listPenitip &lP, string nama, string tanggal);
 void findRelasi(listGudang &lG, adrPenitip P); //  P untuk mencari relasi dari parent
 void showAllGudang(listGudang lG);
 void showAllPenitip(listPenitip lP);
-void showPenitipDariGudangTertentu();
+void showPenitipDariGudangTertentu(listRelasi lR, adrGudang G);
 void showRelasiGudang();
 void showRelasiPenitip(listPenitip lP, listGudang lG, adrPenitip P);
 void showGudangPenitip(listGudang lG, adrPenitip P);
