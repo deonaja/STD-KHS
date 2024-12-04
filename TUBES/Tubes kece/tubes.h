@@ -25,6 +25,7 @@ struct penitip {
 struct elemenRelasi {
     adrRelasi nextRelasi;
     adrPenitip nextPenitip;
+    adrGudang nextGudang;
 };
 
 struct elemenGudang {
