@@ -63,6 +63,178 @@ void mainMenu(char &n) {
 void menu_1(listGudang &lG, listPenitip &lP) {
     char menu;
     bool status = false;
+    string Back;
+    menuGudang(menu);
+    while (!status) {
+        if (menu == '1') {
+            clearScreen();
+            menu_1_insert(lG);
+        } else if (menu == '2') {
+            clearScreen();
+            menu_1_delete(lG);
+        } else if (menu == '3') {
+            clearScreen();
+            menu_1_find(lG);
+        } else if (menu == '4') {
+            clearScreen();
+            showAllGudang(lG);
+            waitForEnter();
+            clearScreen();
+        } else if (menu == '0') {
+            status = true;
+        } else {
+            cout << "\nINPUT INVALID" << endl;
+            waitForEnter();
+            clearScreen();
+        }
+        Back = "";
+        if (menu >= '0' && menu <= '3') {
+            while (Back != "Y" && Back != "N" && !status) {
+                cout << "Kembali ke Menu Gudang? (Y/N) : ";
+                cin >> Back;
+                if (Back == "Y") {
+                    clearScreen();
+                    menuGudang(menu);
+                } else if (Back == "N") {
+                    clearScreen();
+                    status = false;
+                }
+            }
+        } else {
+            menuGudang(menu);
+        }
+    }
+}
+
+void menu_1_insert(listGudang &lG) {
+    gudang G;
+    cout << "Masukan Nomor Gudang : ";
+    cin >> G.nomor_gudang;
+    cout << "Masukan Slot Tersedia Gudang : ";
+    cin >> G.slot_tersedia_gudang;
+    insertGudang(lG, createNewGudang(G));
+    cout << "\nData Berhasil Ditambahkan" << endl;
+    waitForEnter();
+}
+
+void menu_1_delete(listGudang &lG) {
+    gudang G;
+    showAllGudang(lG);
+    cout << "Masukan Nomor Gudang Yang Ingin Dihapus : ";
+    cin >> G.nomor_gudang;
+    deleteGudang(lG, findGudang(lG, G.nomor_gudang));
+    waitForEnter();
+}
+
+void menu_1_find(listGudang &lG) {
+    gudang G;
+    cout << "Masukan Nomor Gudang Yang Ingin Dicari : ";
+    cin >> G.nomor_gudang;
+    adrGudang findG = findGudang(lG, G.nomor_gudang);
+    if (findG == NULL) {
+        cout << "\nGudang dengan nomor " << G.nomor_gudang << " tidak ditemukan" << endl;
+    } else {
+        cout << "\nGudang dengan nomor " << G.nomor_gudang << " ditemukan" << endl;
+        cout << "Data Gudang : " << endl;
+        cout << "Nama Gudang            : " << findG->info.nomor_gudang << endl;
+        cout << "Slot Tersedia Gudang   : " << findG->info.slot_tersedia_gudang << endl;
+        cout << endl;
+    }
+    waitForEnter();
+}
+
+void menuGudang(char &n) {
+    cout << "============DATA GUDANG============" << endl;
+    cout << "1.Masukan Data Gudang" << endl;
+    cout << "2.Delete Data Gudang" << endl;
+    cout << "3.Cari Data Gudang" << endl;
+    cout << "4.Tampilkan Data Gudang" << endl;
+    cout << "1." << endl;
+    cout << "0.Back" << endl;
+    cout << "Pilih : ";
+    cin >> n;
+}
+
+void menu_2(listGudang &lG, listPenitip &lP) {
+    char menu;
+    bool status = false;
+    string Back;
+    while (!status) {
+        menuGudang(menu);
+        if (menu == '1') {
+            menu_2_insert(lP);
+        } else if (menu == '2') {
+            menu_2_delete(lP);
+        } else if (menu == '3') {
+
+        } else if (menu == '4') {
+
+        } else if (menu == '0') {
+            status = true;
+        } else {
+            cout << "\nINPUT INVALID" << endl;
+            waitForEnter();
+            clearScreen();
+        }
+        Back = "";
+        if (menu >= '0' && menu <= '3') {
+            while (Back != "Y" && Back != "N" && !status) {
+                cout << "Kembali ke Menu Penitip? (Y/N) : ";
+                cin >> Back;
+                if (Back == "Y") {
+                    clearScreen();
+                    menuPenitip(menu);
+                } else if (Back == "N") {
+                    clearScreen();
+                    status = false;
+                }
+            }
+        } else {
+            menuPenitip(menu);
+        }
+    }
+}
+
+void menu_2_insert(listPenitip &lP) {
+    penitip P;
+    cout << "Masukan Nama Penitip           : ";
+    cin >> P.nama_penitip;
+    cout << "Masukan Tanggal Masuk Barang   : ";
+    cin >> P.tanggal_masuk_barang;
+    cout << "Masukan Jumlah Barang          : ";
+    cin >> P.jumlah_barang;
+    cout << "Masukan Info Barang            : ";
+    cin >> P.info_barang;
+    insertPenitip(lP, createNewPenitip(P));
+    waitForEnter();
+}
+
+void menu_2_delete(listPenitip &lP) {
+    penitip P;
+    showAllPenitip(lP);
+    cout << "Masukan Nama Penitip Yang Ingin Dihapus";
+    cin >> P.nama_penitip;
+    cout << "Masukan Tanggal Masuk Penitip Yang Ingin Dihapus";
+    cin >> P.tanggal_masuk_barang;
+    deletePenitip(lP, P.nama_penitip, P.tanggal_masuk_barang);
+    waitForEnter();
+}
+
+void menuPenitip(char &n) {
+    cout << "============DATA PENITIP============" << endl;
+    cout << "1.Masukan Data Penitip" << endl;
+    cout << "2.Delete Data Penitip" << endl;
+    cout << "3.Cari Data Penitip" << endl;
+    cout << "4.Tampilkan Data Penitip" << endl;
+    cout << "1." << endl;
+    cout << "0.Back" << endl;
+    cout << "Pilih : ";
+    cin >> n;
+}
+
+void menu_3(listGudang &lG, listPenitip &lP) {
+    char menu;
+    bool status = false;
     while (!status) {
         menuGudang(menu);
         if (menu == '1') {
@@ -81,38 +253,6 @@ void menu_1(listGudang &lG, listPenitip &lP) {
             clearScreen();
         }
     }
-}
-
-void menuGudang(char &n) {
-    cout << "============DATA GUDANG============" << endl;
-    cout << "1.Masukan Data Gudang" << endl;
-    cout << "2.Delete Data Gudang" << endl;
-    cout << "3.Cari Data Gudang" << endl;
-    cout << "4.Tampilkan Data Gudang" << endl;
-    cout << "1." << endl;
-    cout << "0.Back" << endl;
-    cout << "Pilih : ";
-    cin >> n;
-}
-
-void menu_2(listGudang &lG, listPenitip &lP) {
-
-}
-
-void menuPenitip(char &n) {
-    cout << "============DATA PENITIP============" << endl;
-    cout << "1.Masukan Data Penitip" << endl;
-    cout << "2.Delete Data Penitip" << endl;
-    cout << "3.Cari Data Penitip" << endl;
-    cout << "4.Tampilkan Data Penitip" << endl;
-    cout << "1." << endl;
-    cout << "0.Back" << endl;
-    cout << "Pilih : ";
-    cin >> n;
-}
-
-void menu_3(listGudang &lG, listPenitip &lP) {
-
 }
 
 void menuRelasi(char &n) {
@@ -159,6 +299,7 @@ void insertGudang(listGudang &lG, adrGudang G){
             Q = Q->next;
         }
         Q->next = G;
+        cout << "\nData Berhasil Ditambahkan" << endl;
     }
 }
 
@@ -172,6 +313,7 @@ void insertPenitip(listPenitip &lP, adrPenitip P){
             P->prev = lP.last;
             lP.last = P;
         }
+        cout << "\nData Berhasil Ditambahkan" << endl;
     }
 }
 
@@ -213,6 +355,8 @@ void deleteGudang(listGudang &lG, adrGudang G){
             P->next = Q->next;
             Q->next = NULL;
         }
+        delete Q;
+        cout << "\nData Berhasil Dihapus" << endl;
     }
 }
 
@@ -326,8 +470,9 @@ void showAllGudang(listGudang lG){
         adrGudang G;
         G = lG.first;
         while(G!=NULL){
-            cout<<"nomor gudang: "<<G->info.nomor_gudang<<endl;
-            cout<<"slot tersedia gudang: "<<G->info.slot_tersedia_gudang<<endl;
+            cout<<"Nomor Gudang         : "<<G->info.nomor_gudang<<endl;
+            cout<<"Slot Tersedia Gudang : "<<G->info.slot_tersedia_gudang<<endl;
+            cout<<endl;
             G = G->next;
         }
     }
