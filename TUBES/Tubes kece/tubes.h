@@ -89,7 +89,7 @@ void showRelasiPenitip(listPenitip lP, listGudang lG, adrPenitip P);
 void showGudangPenitip(listGudang lG, adrPenitip P);
 void hitungRelasiGudang(listGudang lG);
 void hitungRelasiPenitipTertentu();
-void hitungPenitipTakBerelasi();
+void hitungPenitipTakBerelasi(listPenitip lP, listGudang lG);
 void editSlotGudang(listGudang &lG, adrPenitip P, adrPenitip newP); // P untuk relasi child yang ingin diganti; newP untuk tujuan baru relasi yang diganti
 
 
