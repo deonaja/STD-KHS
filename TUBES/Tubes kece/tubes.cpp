@@ -504,21 +504,33 @@ void showAllPenitip(listPenitip lP) {
     }
 }
 
-void showPenitipDariGudangTertentu(listRelasi lR, adrGudang G){
-    if(lR.first == NULL){
-        cout<<"list relasi kosong!"<<endl;
-    }else{
-        adrRelasi R;
-        R = lR.first;
-        while(R!=NULL){
-            if(R->nextGudang == G){
-                cout<<"Nama Penitip         : "<<R->nextPenitip->info.nama_penitip<<endl;
-                cout<<"Tanggal Masuk Barang : "<<R->nextPenitip->info.tanggal_masuk_barang<<endl;
-                cout<<"Jumlah Barang        : "<<R->nextPenitip->info.jumlah_barang<<endl;
-                cout<<"Info Barang          : "<<R->nextPenitip->info.info_barang<<endl;
+void showPenitipDariGudangTertentu(listPenitip lP, adrGudang G) {
+    if (G == NULL) {
+        cout << "Gudang tidak ditemukan!" << endl;
+        return;
+    }
+
+    adrPenitip P = lP.first;
+    bool ketemu = false;
+
+    while (P != NULL) {
+        adrRelasi R = P->nextRelasi;
+        while (R != NULL) {
+            if (R->nextGudang == G) {
+                cout << "Nama Penitip         : " << P->info.nama_penitip << endl;
+                cout << "Tanggal Masuk Barang : " << P->info.tanggal_masuk_barang << endl;
+                cout << "Jumlah Barang        : " << P->info.jumlah_barang << endl;
+                cout << "Info Barang          : " << P->info.info_barang << endl;
+                cout << "-----------------------------" << endl;
+                ketemu = true;
             }
             R = R->nextRelasi;
         }
+        P = P->next;
+    }
+
+    if (!ketemu) {
+        cout << "Tidak ada penitip di gudang dengan nomor: " << G->info.nomor_gudang << endl;
     }
 }
 
