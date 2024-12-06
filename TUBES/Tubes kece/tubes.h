@@ -80,12 +80,12 @@ adrPenitip findPenitip(listPenitip &lP, string nama, string tanggal);
 void findRelasi(listGudang &lG, adrPenitip P); //  P untuk mencari relasi dari parent
 void showAllGudang(listGudang lG);
 void showAllPenitip(listPenitip lP);
-void showPenitipDariGudangTertentu(listRelasi lR, adrGudang G);
+void showPenitipDariGudangTertentu(listPenitip lP, adrGudang G);
 void showRelasiGudang(listGudang lG, listPenitip lP);
 void showRelasiPenitip(listPenitip lP, listGudang lG, adrPenitip P);
 void showGudangPenitip(listGudang lG, adrPenitip P);
 void hitungRelasiGudang(listGudang lG);
-void hitungRelasiPenitipTertentu();
+void hitungRelasiPenitipTertentu(listPenitip lP, string nama_penitip);
 void hitungPenitipTakBerelasi(listPenitip lP, listGudang lG);
 void editSlotGudang(listGudang &lG, adrPenitip P, adrPenitip newP); // P untuk relasi child yang ingin diganti; newP untuk tujuan baru relasi yang diganti
 
