@@ -27,7 +27,7 @@ void menu(listGudang &lG, listPenitip &lP){
         } else if (menu == '0'){
             status = true;
         } else {
-            cout << "\nINPUT INVALID" << endl;
+            cout << "INPUT INVALID" << endl;
             waitForEnter();
             clearScreen();
         }
@@ -69,6 +69,7 @@ void menu_1(listGudang &lG, listPenitip &lP) {
             clearScreen();
         } else if (menu == '0') {
             status = true;
+            clearScreen();
         } else {
             cout << "INPUT INVALID" << endl;
             waitForEnter();
@@ -162,6 +163,7 @@ void menu_2(listGudang &lG, listPenitip &lP) {
 
         } else if (menu == '0') {
             status = true;
+            clearScreen();
         } else {
             cout << "INPUT INVALID" << endl;
             waitForEnter();
@@ -242,6 +244,7 @@ void menu_3(listGudang &lG, listPenitip &lP) {
 
         } else if (menu == '0') {
             status = true;
+            clearScreen();
         } else {
             cout << "INPUT INVALID" << endl;
             waitForEnter();
