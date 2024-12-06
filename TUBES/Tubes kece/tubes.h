@@ -86,7 +86,7 @@ void showAllPenitip(listPenitip lP);
 void showPenitipDariGudangTertentu(listRelasi lR, adrGudang G);
 void showRelasiGudang();
 void showRelasiPenitip(listPenitip lP, listGudang lG, adrPenitip P);
-void showGudangPenitip(listGudang lG, adrPenitip P);
+void showGudangDariPenitipTertentu(listGudang lG, adrPenitip P);
 void hitungRelasiGudang(listGudang lG);
 void hitungRelasiPenitipTertentu();
 void hitungPenitipTakBerelasi();
