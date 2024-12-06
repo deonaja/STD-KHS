@@ -595,7 +595,31 @@ void hitungRelasiGudang(listGudang lG) {
 }
 
 void hitungRelasiPenitipTertentu();
-void hitungPenitipTakBerelasi();
+void hitungPenitipTakBerelasi(listPenitip lP, listGudang lG){
+    int count = 0;
+    adrPenitip P = lP.first;
+    while (P != NULL) {
+        bool hasRelation = false;
+        adrGudang G = lG.first;
+        while (G != NULL && !hasRelation) {
+            adrRelasi R = G->nextRelasi;
+            while (R != NULL) {
+                if (R->nextPenitip == P) {
+                    hasRelation = true;
+                    break;
+                }
+                R = R->nextRelasi;
+            }
+            G = G->next;
+        }
+        if (!hasRelation) {
+            count++;
+        }
+        P = P->next;
+    }
+    cout << "Jumlah penitip tanpa relasi: " << count << endl;
+}
+
 void editSlotGudang(listGudang &lG, adrPenitip P, adrPenitip newP) {
     int i = 0;
     if (P == NULL) {
