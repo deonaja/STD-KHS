@@ -49,10 +49,6 @@ struct listGudang {
     adrGudang first;
 };
 
-struct listRelasi{
-    adrRelasi first;
-};
-
 void clearScreen();
 void waitForEnter();
 void menu(listGudang &lG, listPenitip &lP);
