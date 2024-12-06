@@ -38,6 +38,7 @@ struct elemenPenitip {
     penitip info;
     adrPenitip next;
     adrPenitip prev;
+    adrRelasi nextRelasi;
 };
 
 struct listPenitip {
