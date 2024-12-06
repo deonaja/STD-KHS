@@ -504,19 +504,17 @@ void showAllPenitip(listPenitip lP) {
     }
 }
 
-void showPenitipDariGudangTertentu(listPenitip lP, adrGudang G) {
+void showPenitipDariGudangTertentu(listPenitip lP, listGudang lG, adrGudang G) {
     if (G == NULL) {
         cout << "Gudang tidak ditemukan!" << endl;
         return;
     }
-
     adrPenitip P = lP.first;
     bool ketemu = false;
-
     while (P != NULL) {
-        adrRelasi R = P->nextRelasi;
+        adrRelasi R = G->nextRelasi;
         while (R != NULL) {
-            if (R->nextGudang == G) {
+            if (R->nextGudang == G && R->nextPenitip == P) {
                 cout << "Nama Penitip         : " << P->info.nama_penitip << endl;
                 cout << "Tanggal Masuk Barang : " << P->info.tanggal_masuk_barang << endl;
                 cout << "Jumlah Barang        : " << P->info.jumlah_barang << endl;
