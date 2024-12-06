@@ -80,7 +80,7 @@ void findRelasi(listGudang &lG, adrPenitip P); //  P untuk mencari relasi dari p
 void showAllGudang(listGudang lG);
 void showAllPenitip(listPenitip lP);
 void showPenitipDariGudangTertentu(listRelasi lR, adrGudang G);
-void showRelasiGudang();
+void showRelasiGudang(listGudang lG, listPenitip lP);
 void showRelasiPenitip(listPenitip lP, listGudang lG, adrPenitip P);
 void showGudangPenitip(listGudang lG, adrPenitip P);
 void hitungRelasiGudang(listGudang lG);
