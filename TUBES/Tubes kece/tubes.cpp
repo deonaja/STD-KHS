@@ -521,7 +521,37 @@ void showPenitipDariGudangTertentu(listRelasi lR, adrGudang G){
         }
     }
 }
-void showRelasiGudang();
+
+void showRelasiGudang(listGudang lG, listPenitip lP) {
+    if (lG.first == NULL) {
+        cout << "List gudang kosong!" << endl;
+        return;
+    }
+    adrGudang G = lG.first;
+    while (G != NULL) {
+        cout << "==============================" << endl;
+        cout << "Nomor Gudang         : " << G->info.nomor_gudang << endl;
+        cout << "Slot Tersedia Gudang : " << G->info.slot_tersedia_gudang << endl;
+
+        adrRelasi R = G->nextRelasi;
+        if (R == NULL) {
+            cout << "Tidak ada penitip yang berelasi dengan gudang ini." << endl;
+        } else {
+            cout << "Penitip yang berelasi:" << endl;
+            while (R != NULL) {
+                cout << "------------------------------" << endl;
+                cout << "Nama Penitip         : " << R->nextPenitip->info.nama_penitip << endl;
+                cout << "Tanggal Masuk Barang : " << R->nextPenitip->info.tanggal_masuk_barang << endl;
+                cout << "Jumlah Barang        : " << R->nextPenitip->info.jumlah_barang << endl;
+                cout << "Info Barang          : " << R->nextPenitip->info.info_barang << endl;
+                R = R->nextRelasi;
+            }
+        }
+        G = G->next;
+    }
+    cout << "==============================" << endl;
+}
+
 void showRelasiPenitip(listPenitip lP, listGudang lG, adrPenitip P) {
     adrPenitip tempP = lP.first;
     bool find;
