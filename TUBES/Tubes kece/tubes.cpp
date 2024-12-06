@@ -504,24 +504,64 @@ void showAllPenitip(listPenitip lP) {
     }
 }
 
-void showPenitipDariGudangTertentu(listRelasi lR, adrGudang G){
-    if(lR.first == NULL){
-        cout<<"list relasi kosong!"<<endl;
-    }else{
-        adrRelasi R;
-        R = lR.first;
-        while(R!=NULL){
-            if(R->nextGudang == G){
-                cout<<"Nama Penitip         : "<<R->nextPenitip->info.nama_penitip<<endl;
-                cout<<"Tanggal Masuk Barang : "<<R->nextPenitip->info.tanggal_masuk_barang<<endl;
-                cout<<"Jumlah Barang        : "<<R->nextPenitip->info.jumlah_barang<<endl;
-                cout<<"Info Barang          : "<<R->nextPenitip->info.info_barang<<endl;
+void showPenitipDariGudangTertentu(listPenitip lP, listGudang lG, adrGudang G) {
+    if (G == NULL) {
+        cout << "Gudang tidak ditemukan!" << endl;
+        return;
+    }
+    adrPenitip P = lP.first;
+    bool ketemu = false;
+    while (P != NULL) {
+        adrRelasi R = G->nextRelasi;
+        while (R != NULL) {
+            if (R->nextGudang == G && R->nextPenitip == P) {
+                cout << "Nama Penitip         : " << P->info.nama_penitip << endl;
+                cout << "Tanggal Masuk Barang : " << P->info.tanggal_masuk_barang << endl;
+                cout << "Jumlah Barang        : " << P->info.jumlah_barang << endl;
+                cout << "Info Barang          : " << P->info.info_barang << endl;
+                cout << "-----------------------------" << endl;
+                ketemu = true;
             }
             R = R->nextRelasi;
         }
+        P = P->next;
+    }
+
+    if (!ketemu) {
+        cout << "Tidak ada penitip di gudang dengan nomor: " << G->info.nomor_gudang << endl;
     }
 }
-void showRelasiGudang();
+
+void showRelasiGudang(listGudang lG, listPenitip lP) {
+    if (lG.first == NULL) {
+        cout << "List gudang kosong!" << endl;
+        return;
+    }
+    adrGudang G = lG.first;
+    while (G != NULL) {
+        cout << "==============================" << endl;
+        cout << "Nomor Gudang         : " << G->info.nomor_gudang << endl;
+        cout << "Slot Tersedia Gudang : " << G->info.slot_tersedia_gudang << endl;
+
+        adrRelasi R = G->nextRelasi;
+        if (R == NULL) {
+            cout << "Tidak ada penitip yang berelasi dengan gudang ini." << endl;
+        } else {
+            cout << "Penitip yang berelasi:" << endl;
+            while (R != NULL) {
+                cout << "------------------------------" << endl;
+                cout << "Nama Penitip         : " << R->nextPenitip->info.nama_penitip << endl;
+                cout << "Tanggal Masuk Barang : " << R->nextPenitip->info.tanggal_masuk_barang << endl;
+                cout << "Jumlah Barang        : " << R->nextPenitip->info.jumlah_barang << endl;
+                cout << "Info Barang          : " << R->nextPenitip->info.info_barang << endl;
+                R = R->nextRelasi;
+            }
+        }
+        G = G->next;
+    }
+    cout << "==============================" << endl;
+}
+
 void showRelasiPenitip(listPenitip lP, listGudang lG, adrPenitip P) {
     adrPenitip tempP = lP.first;
     bool find;
@@ -594,7 +634,27 @@ void hitungRelasiGudang(listGudang lG) {
     }
 }
 
-void hitungRelasiPenitipTertentu();
+void hitungRelasiPenitipTertentu(listGudang lG, string nama_penitip) {
+    adrGudang G = lG.first;
+    int jumlahRelasi = 0;
+    while (G != NULL) {
+        adrRelasi R = G->nextRelasi;
+        while (R != NULL) {
+            if (R->nextPenitip->info.nama_penitip == nama_penitip) {
+                jumlahRelasi++;
+            }
+            R = R->nextRelasi;
+        }
+
+        G = G->next;
+    }
+    if (jumlahRelasi > 0) {
+        cout << "Penitip \"" << nama_penitip << "\" memiliki " << jumlahRelasi << " relasi dengan gudang." << endl;
+    } else {
+        cout << "Penitip dengan nama \"" << nama_penitip << "\" tidak memiliki relasi dengan gudang." << endl;
+    }
+}
+
 void hitungPenitipTakBerelasi(listPenitip lP, listGudang lG){
     int count = 0;
     adrPenitip P = lP.first;
