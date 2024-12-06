@@ -636,7 +636,23 @@ void hitungRelasiGudang(listGudang lG) {
     }
 }
 
-void hitungRelasiPenitipTertentu();
+void hitungRelasiPenitipTertentu(listPenitip lP, string nama_penitip) {
+    adrPenitip P = lP.first;
+    while (P != NULL && P->info.nama_penitip != nama_penitip) {
+        P = P->next;
+    }
+    if (P == NULL) {
+        cout << "Penitip dengan nama \"" << nama_penitip << "\" tidak ditemukan." << endl;
+        return;
+    }
+    int jumlahRelasi = 0;
+    adrRelasi R = P->nextRelasi;
+    while (R != NULL) {
+        jumlahRelasi++;
+        R = R->nextRelasi;
+    }
+    cout << "Penitip \"" << nama_penitip << "\" memiliki " << jumlahRelasi << " relasi dengan gudang." << endl;
+}
 void hitungPenitipTakBerelasi(listPenitip lP, listGudang lG){
     int count = 0;
     adrPenitip P = lP.first;
