@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1733558803 source:d:\kuliahan banget\semester 3 masa ga ip 4 lagi\std khs\tp\tp 13\main.cpp
+	<iostream>
+	"tree.h"
+
+1733559587 source:d:\kuliahan banget\semester 3 masa ga ip 4 lagi\std khs\tp\tp 13\tree.cpp
+	"tree.h"
+
+1733558304 d:\kuliahan banget\semester 3 masa ga ip 4 lagi\std khs\tp\tp 13\tree.h
+	<iostream>
+
