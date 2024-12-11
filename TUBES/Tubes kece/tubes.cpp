@@ -181,8 +181,16 @@ void menu_2_insert(listPenitip &lP) {
     cin >> P.tanggal_masuk_barang;
     cout << "Masukan Jumlah Barang          : ";
     cin >> P.jumlah_barang;
-    cout << "Masukan Info Barang            : ";
-    cin >> P.info_barang;
+    if (P.jumlah_barang <= 0 || P.jumlah_barang > 5) {
+        cout << "Input Harus Lebih Besar Dari 0 dan Tidak Boleh Lebih Besar Dari 5!!!" << endl;
+        waitForEnter();
+        clearScreen();
+        return;
+    }
+    for (int i = 0; i < P.jumlah_barang; i++) {
+        cout << "Masukan Info Barang Ke-" << i + 1 << " : ";
+        cin >> P.info_barang[i];
+    }
     insertPenitip(lP, createNewPenitip(P));
     waitForEnter();
 }
@@ -200,22 +208,24 @@ void menu_2_delete(listPenitip &lP) {
 
 void menu_2_find(listPenitip &lP) {
     penitip P;
-    cout << "Masukan Nama Penitip Yang Ingin Dicari                 : ";
+    cout << "Masukan Nama Penitip Yang Ingin Dicari            : ";
     cin >> P.nama_penitip;
-    cout << "Masukan Tanggal Masuk Barang Penitip Yang Ingin Dicari : ";
+    cout << "Masukan Tanggal Masuk Penitip Yang Ingin Dicari   : ";
     cin >> P.tanggal_masuk_barang;
     adrPenitip findP = findPenitip(lP, P.nama_penitip, P.tanggal_masuk_barang);
     if (findP == NULL) {
-        cout << "Data Penitip " << P.nama_penitip << " dan Tanggal " << P.tanggal_masuk_barang << " Tidak Ditemukan" << endl;
+        cout << "Penitip dengan nama " << P.nama_penitip << " dan tanggal " << P.tanggal_masuk_barang << " tidak ditemukan" << endl;
     } else {
-        cout << "Data Penitip " << P.nama_penitip << " dan Tanggal " << P.tanggal_masuk_barang << " Ditemukan" << endl;
-        cout << "Data Penitip" << endl;
-        cout << "Nama Penitip                       : " << findP->info.nama_penitip << endl;
-        cout << "Tanggal Masuk Barang penitip       : " << findP->info.tanggal_masuk_barang << endl;
-        cout << "Jumlah Barang Penitip              : " << findP->info.jumlah_barang << endl;
-        cout << "Info Barang Penitip                : " << findP->info.info_barang << endl;
+        cout << "Penitip dengan nama " << P.nama_penitip << " dan tanggal " << P.tanggal_masuk_barang << " ditemukan" << endl;
+        cout << "Data Penitip :" << endl << endl;
+        cout << "Nama Penitip         : " << findP->info.nama_penitip << endl;
+        cout << "Tanggal Masuk Barang : " << findP->info.tanggal_masuk_barang << endl;
+        cout << "Jumlah Barang        : " << findP->info.jumlah_barang << endl;
+        for (int i = 0; i < findP->info.jumlah_barang; i++) {
+            cout << "Info Barang Ke-" << i + 1 << " : " << findP->info.info_barang[i] << endl;
+        }
+        cout << endl;
     }
-    waitForEnter();
 }
 
 void menu_2_show(listPenitip &lP) {
@@ -253,6 +263,8 @@ void menu_3(listGudang &lG, listPenitip &lP) {
             showRelasiGudang(lG, lP);
             clearScreen();
             waitForEnter();
+        } else if (menu == '5') {
+
         } else if (menu == '0') {
             status = true;
             clearScreen();
@@ -336,7 +348,8 @@ void menuRelasi(char &n) {
     cout << "1.Masukan Data Relasi" << endl;
     cout << "2.Delete Data Relasi" << endl;
     cout << "3.Cari Data Relasi" << endl;
-    cout << "4.Edit Data Relasi" << endl;
+    cout << "4.Show Data Relasi" << endl;
+    cout << "5.Edit Data Relasi" << endl;
     cout << "1." << endl;
     cout << "0.Back" << endl;
     cout << "Pilih : ";
@@ -394,7 +407,7 @@ void insertPenitip(listPenitip &lP, adrPenitip P){
 }
 
 void insertRelation(listPenitip lP, listGudang lG, adrGudang G, adrPenitip P) {
-    if (G->info.slot_tersedia_gudang >= 0) {
+    if (G->info.slot_tersedia_gudang > 0) {
         if (G != NULL && P != NULL) {
             adrRelasi R = G->nextRelasi;
             if (R == NULL) {
@@ -406,6 +419,7 @@ void insertRelation(listPenitip lP, listGudang lG, adrGudang G, adrPenitip P) {
                 }
                 Q->nextRelasi = S;
             }
+            G->info.slot_tersedia_gudang--;
             cout << "\nData Berhasil Ditambahkan" << endl;
         }
     } else {
@@ -483,22 +497,40 @@ void deleteRelasi(listGudang &lG, adrPenitip P) {
         while (G != NULL) {
             adrRelasi R = G->nextRelasi;
             while (R != NULL) {
-                adrRelasi beforeR;
-                adrRelasi deleteR;
                 if (R->nextPenitip == P) {
-                    deleteR = R;
-                    if (G->nextRelasi == R) {
-                        R = R->nextRelasi;
-                    } else if (R->nextRelasi == NULL) {
-                        beforeR = NULL;
+                    if (R == G->nextRelasi) {
+                        G->nextRelasi = R->nextRelasi;
+                        R->nextRelasi = NULL;
                     } else {
-                        beforeR = deleteR->nextRelasi;
-                        deleteR->nextRelasi = NULL;
+                        adrRelasi Q = G->nextRelasi;
+                        while (Q->nextRelasi != R) {
+                            Q = Q->nextRelasi;
+                        }
+                        Q->nextRelasi = R->nextRelasi;
+                        R->nextRelasi = NULL;
                     }
+                    G->info.slot_tersedia_gudang++;
+                    cout << "Data Berhasil Dihapus" << endl;
                 }
-                delete deleteR;
-                beforeR = R;
                 R = R->nextRelasi;
+
+//                adrRelasi beforeR;
+//                adrRelasi deleteR;
+//                if (R->nextPenitip == P) {
+//                    deleteR = R;
+//                    if (G->nextRelasi == R) {
+//                        R = R->nextRelasi;
+//                    } else if (R->nextRelasi == NULL) {
+//                        beforeR = NULL;
+//                    } else {
+//                        beforeR = deleteR->nextRelasi;
+//                        deleteR->nextRelasi = NULL;
+//                    }
+//                    G->info.slot_tersedia_gudang++;
+//                }
+//                delete deleteR;
+//                beforeR = R;
+//                R = R->nextRelasi;
             }
             G = G->next;
         }
@@ -551,7 +583,9 @@ void findRelasi(listGudang &lG, adrPenitip P) {
                     cout << "Nama Penitip         : " << P->info.nama_penitip << endl;
                     cout << "Tanggal Masuk Barang : " << P->info.tanggal_masuk_barang << endl;
                     cout << "Jumlah Barang        : " << P->info.jumlah_barang << endl;
-                    cout << "Info Barang          : " << P->info.info_barang << endl;
+                    for (int i = 0; i < P->info.jumlah_barang; i++) {
+                        cout << "Info Barang Ke-" << i + 1 << " : " << P->info.info_barang[i] << endl;
+                    }
                     cout << "Data Gudang Yang Berelasi Dengan " << P->info.nama_penitip << " :" << endl;
                     cout << "Nomor Gudang           : " << G->info.nomor_gudang;
                     cout << "Slot Tersedia Gudang   : " << G->info.slot_tersedia_gudang;
@@ -587,7 +621,9 @@ void showAllPenitip(listPenitip lP) {
             cout << "Nama Penitip         : " << P->info.nama_penitip << endl;
             cout << "Tanggal Masuk Barang : " << P->info.tanggal_masuk_barang << endl;
             cout << "Jumlah Barang        : " << P->info.jumlah_barang << endl;
-            cout << "Info Barang          : " << P->info.info_barang << endl;
+            for (int i = 0; i < P->info.jumlah_barang; i++) {
+                cout << "Info Barang Ke-" << i + 1 << " : " << P->info.info_barang[i] << endl;
+            }
             cout << "-----------------------------" << endl;
             P = P->next;
         }
@@ -608,7 +644,9 @@ void showPenitipDariGudangTertentu(listPenitip lP, listGudang lG, adrGudang G) {
                 cout << "Nama Penitip         : " << P->info.nama_penitip << endl;
                 cout << "Tanggal Masuk Barang : " << P->info.tanggal_masuk_barang << endl;
                 cout << "Jumlah Barang        : " << P->info.jumlah_barang << endl;
-                cout << "Info Barang          : " << P->info.info_barang << endl;
+                for (int i = 0; i < P->info.jumlah_barang; i++) {
+                    cout << "Info Barang Ke-" << i + 1 << " : " << P->info.info_barang[i] << endl;
+                }
                 cout << "-----------------------------" << endl;
                 ketemu = true;
             }
@@ -643,7 +681,10 @@ void showRelasiGudang(listGudang lG, listPenitip lP) {
                 cout << "Nama Penitip         : " << R->nextPenitip->info.nama_penitip << endl;
                 cout << "Tanggal Masuk Barang : " << R->nextPenitip->info.tanggal_masuk_barang << endl;
                 cout << "Jumlah Barang        : " << R->nextPenitip->info.jumlah_barang << endl;
-                cout << "Info Barang          : " << R->nextPenitip->info.info_barang << endl;
+                for (int i = 0; i < R->nextPenitip->info.jumlah_barang; i++) {
+                    cout << "Info Barang Ke-" << i + 1 << " : " << R->nextPenitip->info.info_barang[i] << endl;
+                }
+                cout << "------------------------------" << endl;
                 R = R->nextRelasi;
             }
         }
@@ -660,7 +701,9 @@ void showRelasiPenitip(listPenitip lP, listGudang lG, adrPenitip P) {
         cout << "Nama Penitip         : " << P->info.nama_penitip << endl;
         cout << "Tanggal Masuk Barang : " << P->info.tanggal_masuk_barang << endl;
         cout << "Jumlah Barang        : " << P->info.jumlah_barang << endl;
-        cout << "Info Barang          : " << P->info.info_barang << endl;
+        for (int i = 0; i < P->info.jumlah_barang; i++) {
+            cout << "Info Barang Ke-" << i + 1 << " : " << P->info.info_barang[i] << endl;
+        }
         cout << "------------------------------" << endl;
         adrGudang G = lG.first;
         while (G != NULL) {

@@ -19,7 +19,7 @@ struct penitip {
     string nama_penitip;
     string tanggal_masuk_barang;
     int jumlah_barang;
-    string info_barang;
+    string info_barang[5];
 };
 
 struct elemenRelasi {
