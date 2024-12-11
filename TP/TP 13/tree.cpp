@@ -1,6 +1,6 @@
 #include "tree.h"
 
-adrNode newNode(int x) {
+adrNode newNode_103032300101(int x) {
     adrNode p = new node;
     p->info = x;
     p->left = NULL;
@@ -8,67 +8,100 @@ adrNode newNode(int x) {
     return p;
 }
 
-adrNode findNode(adrNode root, int x) {
+adrNode findNode_103032300101(adrNode root, int x) {
     if (root == NULL || root->info == x) {
         return root;
     }
     if (x < root->info) {
-        return findNode(root->left, x);
+        return findNode_103032300101(root->left, x);
     } else {
-        return findNode(root->right, x);
+        return findNode_103032300101(root->right, x);
     }
 }
 
-void insertNode(adrNode &root, adrNode p){
+void insertNode_103032300101(adrNode &root, adrNode p){
     if (root == NULL) {
         root = p;
     } else if (p->info < root->info) {
-        insertNode(root->left, p);
+        insertNode_103032300101(root->left, p);
     } else if (p->info > root->info) {
-        insertNode(root->right, p);
+        insertNode_103032300101(root->right, p);
     }
 }
 
-void printPreOrder(adrNode root) {
+adrNode deleteNode_103032300101(adrNode &root, int x) {
+    if (root != NULL) {
+        if (x < root->info) {
+            root->left = deleteNode_103032300101(root->left, x);
+        } else if (x > root->info) {
+            root->right = deleteNode_103032300101(root->right, x);
+        } else {
+            if (root->left == NULL) {
+                adrNode temp = root->right;
+                delete root;
+                return temp;
+            } else if (root->right == NULL) {
+                adrNode temp = root->left;
+                delete root;
+                return temp;
+            }
+            adrNode temp = root->right;
+            while (temp->left != NULL) {
+                temp = temp->left;
+            }
+            root->info = temp->info;
+            root->right = deleteNode_103032300101(root->right, temp->info);
+        }
+    }
+    return root;
+}
+
+void printPreOrder_103032300101(adrNode root) {
     if (root != NULL) {
         cout << root->info << " ";
-        printPreOrder(root->left);
-        printPreOrder(root->right);
+        printPreOrder_103032300101(root->left);
+        printPreOrder_103032300101(root->right);
     }
 }
 
-void printDecendant(adrNode root, int x) {
-    adrNode node = findNode(root, x);
+void printDecendant_103032300101(adrNode root, int x) {
+    adrNode node = findNode_103032300101(root, x);
     if (node != NULL) {
-        printPreOrder(node->left);
-        printPreOrder(node->right);
+        if (node->left != NULL) {
+            cout << node->left->info << " ";
+            printDecendant_103032300101(node->left, node->left->info);
+        }
+        if (node->right != NULL) {
+            cout << node->right->info << " ";
+            printDecendant_103032300101(node->right, node->right->info);
+        }
     } else {
         cout << "Node Tidak Ditemukan" << endl;
     }
 }
 
-int sumNode(adrNode root) {
+int sumNode_103032300101(adrNode root) {
     if (root == NULL) {
         return 0;
     }
-    return root->info + sumNode(root->left) + sumNode(root->right);
+    return root->info + sumNode_103032300101(root->left) + sumNode_103032300101(root->right);
 }
 
-int countLeaves(adrNode root) {
+int countLeaves_103032300101(adrNode root) {
     if (root == NULL) {
         return 0;
     }
     if (root->left == NULL && root->right == NULL) {
         return 1;
     }
-    return countLeaves(root->left) + countLeaves(root->right);
+    return countLeaves_103032300101(root->left) + countLeaves_103032300101(root->right);
 }
 
-int heightTree(adrNode root) {
+int heightTree_103032300101(adrNode root) {
     if (root == NULL) {
         return -1;
     }
-    int leftHeight = heightTree(root->left);
-    int rightHeight = heightTree(root->right);
+    int leftHeight = heightTree_103032300101(root->left);
+    int rightHeight = heightTree_103032300101(root->right);
     return 1 + max(leftHeight, rightHeight);
 }
