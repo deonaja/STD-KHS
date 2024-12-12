@@ -776,7 +776,7 @@ void showPenitipDariGudangTertentu(listPenitip lP, listGudang lG, adrGudang G) {
                 cout << "Nama Penitip         : " << P->info.nama_penitip << endl;
                 cout << "Tanggal Masuk Barang : " << P->info.tanggal_masuk_barang << endl;
                 cout << "Jumlah Barang        : " << P->info.jumlah_barang << endl;
-                for (int i = 0; i < P->info.jumlah_barang; i++) {
+                for (int i = 0; i < P->info.jumlah_barang && i < 5; i++) {
                     cout << "Info Barang Ke-" << i + 1 << " : " << P->info.info_barang[i] << endl;
                 }
                 cout << "-----------------------------" << endl;
