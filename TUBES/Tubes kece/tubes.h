@@ -67,6 +67,7 @@ void menu_3(listGudang &lG, listPenitip &lP);
 void menu_3_insert(listGudang &lG, listPenitip &lP);
 void menu_3_delete(listGudang &lG, listPenitip &lP);
 void menu_3_find(listGudang &lG, listPenitip &lP);
+void menu_3_showPenitipGudangTertentu(listGudang &lG, listPenitip &lP);
 void menuGudang(char &n);
 void menuPenitip(char &n);
 void menuRelasi(char &n);
@@ -75,16 +76,16 @@ adrPenitip createNewPenitip(penitip x);
 adrRelasi createNewRelasi(adrPenitip P);
 void insertGudang(listGudang &lG, adrGudang G);
 void insertPenitip(listPenitip &lP, adrPenitip P);
-void insertRelation(listPenitip lP, listGudang lG, adrGudang G, adrPenitip P); //G untuk data parent yang ingin ditambah relasinya; P untuk child yang akan direlasikan ke parent
+void insertRelation(listPenitip lP, listGudang &lG, adrGudang G, adrPenitip P); //G untuk data parent yang ingin ditambah relasinya; P untuk child yang akan direlasikan ke parent
 void deleteGudang(listGudang &lG, adrGudang G);
 void deletePenitip(listPenitip &lP, string nama, string tanggal);
-void deleteRelasi(listGudang &lG, adrPenitip P);
+void deleteRelasi(listGudang &lG, adrGudang G, adrPenitip P);
 adrGudang findGudang(listGudang &lG, int nomor_gudang);
 adrPenitip findPenitip(listPenitip &lP, string nama, string tanggal);
-void findRelasi(listGudang &lG, adrPenitip P); //  P untuk mencari relasi dari parent
+adrRelasi findRelasi(adrGudang G, adrPenitip P); //  P untuk mencari relasi dari parent
 void showAllGudang(listGudang lG);
 void showAllPenitip(listPenitip lP);
-void showPenitipDariGudangTertentu(listPenitip lP, adrGudang G);
+void showPenitipDariGudangTertentu(listPenitip lP, listGudang lG, adrGudang G);
 void showRelasiGudang(listGudang lG, listPenitip lP);
 void showRelasiPenitip(listPenitip lP, listGudang lG, adrPenitip P);
 void showGudangPenitip(listGudang lG, adrPenitip P);
