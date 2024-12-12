@@ -763,9 +763,9 @@ void showPenitipDariGudangTertentu(listPenitip lP, listGudang lG, adrGudang G) {
     adrPenitip P = lP.first;
     bool ketemu = false;
     while (P != NULL) {
-        adrRelasi R = G->nextRelasi;
+        adrRelasi R = P->nextRelasi;
         while (R != NULL) {
-            if (R->nextGudang == G && R->nextPenitip == P) {
+            if (R->nextGudang == G) {
                 cout << "Nama Penitip         : " << P->info.nama_penitip << endl;
                 cout << "Tanggal Masuk Barang : " << P->info.tanggal_masuk_barang << endl;
                 cout << "Jumlah Barang        : " << P->info.jumlah_barang << endl;
