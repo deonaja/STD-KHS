@@ -69,6 +69,7 @@ void menu_3_delete(listGudang &lG, listPenitip &lP);
 void menu_3_find(listGudang &lG, listPenitip &lP);
 void menu_3_showPenitipGudangTertentu(listGudang &lG, listPenitip &lP);
 void menu_3_relasiPenitip(listGudang &lG, listPenitip &lP);
+void menu_3_gudangPenitip(listGudang &lG, listPenitip &lP);
 void menuGudang(char &n);
 void menuPenitip(char &n);
 void menuRelasi(char &n);

@@ -461,6 +461,23 @@ void menu_3_relasiPenitip(listGudang &lG, listPenitip &lP) {
     waitForEnter();
 }
 
+void menu_3_gudangPenitip(listGudang &lG, listPenitip &lP) {
+    string nama_penitip, tanggal_masuk_barang;
+    cout << "Masukan Nama Penitip           : ";
+    cin >> nama_penitip;
+    cout << "Masukan Tanggal Masuk Barang   : ";
+    cin >> tanggal_masuk_barang;
+    adrPenitip P = findPenitip(lP, nama_penitip, tanggal_masuk_barang);
+    if (P == NULL) {
+        cout << "Penitip Tidak Ditemukan" << endl;
+        waitForEnter();
+        clearScreen();
+        return;
+    }
+    showGudangPenitip(lG, P);
+    waitForEnter();
+}
+
 void menuRelasi(char &n) {
     cout << "============DATA RELASI============" << endl;
     cout << "1.Masukan Data Relasi" << endl;
@@ -469,7 +486,8 @@ void menuRelasi(char &n) {
     cout << "4.Show Data Relasi" << endl;
     cout << "5.Show Data Penitip Dari Gudang Tertentu" << endl;
     cout << "6.Show Data Penitip Beserta Data Gudang Yang Masing Masing Penitip Tempati" << endl;
-    cout << "7.Show Data Gudang Yang Berelasi Dengan Penitip Tertentu"
+    cout << "7.Show Data Gudang Yang Berelasi Dengan Penitip Tertentu" << endl;
+    cout << "8.Hitung Slot Tersedia Gudang" << endl;
     cout << "0.Back" << endl;
     cout << "Pilih : ";
     cin >> n;
@@ -891,8 +909,8 @@ void showGudangPenitip(listGudang lG, adrPenitip P) {
                     }
                     cout << endl;
                     cout << "------------------------------" << endl;
-                    cout << "Nomor Gudang           : " << G->info.nomor_gudang;
-                    cout << "Slot Tersedia Gudang   : " << G->info.slot_tersedia_gudang;
+                    cout << "Nomor Gudang           : " << G->info.nomor_gudang << endl;
+                    cout << "Slot Tersedia Gudang   : " << G->info.slot_tersedia_gudang << endl;
                     cout << "------------------------------" << endl;
                 }
                 R = R->nextRelasi;
