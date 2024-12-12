@@ -58,11 +58,13 @@ void menu_1(listGudang &lG, listPenitip &lP);
 void menu_1_insert(listGudang &lG);
 void menu_1_delete(listGudang &lG);
 void menu_1_find(listGudang &lG);
+void menu_1_slotTersediaGudang(listGudang &lG);
 void menu_2(listGudang &lG, listPenitip &lP);
 void menu_2_insert(listPenitip &lP);
 void menu_2_delete(listPenitip &lP);
 void menu_2_find(listPenitip &lP);
 void menu_2_show(listPenitip &lP);
+void menu_2_hitungRelasiPenitipTertentu(listPenitip &lP, listGudang &lG);
 void menu_3(listGudang &lG, listPenitip &lP);
 void menu_3_insert(listGudang &lG, listPenitip &lP);
 void menu_3_delete(listGudang &lG, listPenitip &lP);
@@ -92,7 +94,7 @@ void showRelasiGudang(listGudang lG, listPenitip lP);
 void showRelasiPenitip(listPenitip lP, listGudang lG, adrPenitip P);
 void showGudangPenitip(listGudang lG, adrPenitip P);
 void hitungRelasiGudang(listGudang lG);
-void hitungRelasiPenitipTertentu(listPenitip lP, string nama_penitip);
+void hitungRelasiPenitipTertentu(listGudang lG, string nama_penitip);
 void hitungPenitipTakBerelasi(listPenitip lP, listGudang lG);
 void editSlotGudang(listGudang &lG, adrPenitip P, adrPenitip newP); // P untuk relasi child yang ingin diganti; newP untuk tujuan baru relasi yang diganti
 

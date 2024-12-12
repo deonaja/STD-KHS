@@ -63,6 +63,9 @@ void menu_1(listGudang &lG, listPenitip &lP) {
             showAllGudang(lG);
             waitForEnter();
             clearScreen();
+        } else if (menu == '5') {
+            menu_1_slotTersediaGudang(lG);
+            clearScreen();
         } else if (menu == '0') {
             status = true;
             clearScreen();
@@ -97,7 +100,7 @@ void menu_1_insert(listGudang &lG) {
         insertGudang(lG, createNewGudang(G));
         waitForEnter();
     } else {
-        cout << "Nomor Gudang /" << G.nomor_gudang << "/ Sudah ada" << endl;
+        cout << "Nomor Gudang '" << G.nomor_gudang << "' Sudah ada" << endl;
         waitForEnter();
         clearScreen();
     }
@@ -133,12 +136,18 @@ void menu_1_find(listGudang &lG) {
     waitForEnter();
 }
 
+void menu_1_slotTersediaGudang(listGudang &lG) {
+    hitungRelasiGudang(lG);
+    waitForEnter();
+}
+
 void menuGudang(char &n) {
     cout << "============DATA GUDANG============" << endl;
     cout << "1.Masukan Data Gudang" << endl;
     cout << "2.Delete Data Gudang" << endl;
     cout << "3.Cari Data Gudang" << endl;
     cout << "4.Tampilkan Data Gudang" << endl;
+    cout << "5.Hitung Slot Gudang Yang Sudah Terisi" << endl;
     cout << "0.Back" << endl;
     cout << "Pilih : ";
     cin >> n;
@@ -161,6 +170,9 @@ void menu_2(listGudang &lG, listPenitip &lP) {
             clearScreen();
         } else if (menu == '4') {
             menu_2_show(lP);
+            clearScreen();
+        } else if (menu == '5') {
+            menu_2_hitungRelasiPenitipTertentu(lP, lG);
             clearScreen();
         } else if (menu == '0') {
             status = true;
@@ -249,12 +261,29 @@ void menu_2_show(listPenitip &lP) {
     waitForEnter();
 }
 
+void menu_2_hitungRelasiPenitipTertentu(listPenitip &lP, listGudang &lG) {
+    string nama_penitip, tanggal_masuk_barang;
+    cout << "Masukan Nama Penitip           : ";
+    cin >> nama_penitip;
+    cout << "Masukan Tanggal Masuk Barang   : ";
+    cin >> tanggal_masuk_barang;
+    if (findPenitip(lP, nama_penitip, tanggal_masuk_barang) == NULL) {
+        cout << "Penitip Tidak Ditemukan" << endl;
+        waitForEnter();
+        clearScreen();
+        return;
+    }
+    hitungRelasiPenitipTertentu(lG ,nama_penitip);
+    waitForEnter();
+}
+
 void menuPenitip(char &n) {
     cout << "============DATA PENITIP============" << endl;
     cout << "1.Masukan Data Penitip" << endl;
     cout << "2.Delete Data Penitip" << endl;
     cout << "3.Cari Data Penitip" << endl;
     cout << "4.Tampilkan Data Penitip" << endl;
+    cout << "5.Hitung Slot Tersedia Penitip Tertentu" << endl;
     cout << "0.Back" << endl;
     cout << "Pilih : ";
     cin >> n;
@@ -317,7 +346,7 @@ void menu_3_insert(listGudang &lG, listPenitip &lP) {
         clearScreen();
         return;
     } else if (G->info.slot_tersedia_gudang == 0) {
-        cout << "Slot Gudang /" << G->info.nomor_gudang << "/ Sudah Penuh" << endl;
+        cout << "Slot Gudang '" << G->info.nomor_gudang << "' Sudah Penuh" << endl;
         waitForEnter();
         clearScreen();
         return;
@@ -359,7 +388,7 @@ void menu_3_delete(listGudang &lG, listPenitip &lP) {
         clearScreen();
         return;
     } else if (G->nextRelasi == NULL) {
-        cout << "Slot Gudang /" << G->info.nomor_gudang << "/ Tidak Memiliki Relasi" << endl;
+        cout << "Slot Gudang '" << G->info.nomor_gudang << "' Tidak Memiliki Relasi" << endl;
         waitForEnter();
         clearScreen();
         return;
@@ -487,7 +516,6 @@ void menuRelasi(char &n) {
     cout << "5.Show Data Penitip Dari Gudang Tertentu" << endl;
     cout << "6.Show Data Penitip Beserta Data Gudang Yang Masing Masing Penitip Tempati" << endl;
     cout << "7.Show Data Gudang Yang Berelasi Dengan Penitip Tertentu" << endl;
-    cout << "8.Hitung Slot Tersedia Gudang" << endl;
     cout << "0.Back" << endl;
     cout << "Pilih : ";
     cin >> n;
@@ -567,7 +595,7 @@ void insertRelation(listPenitip lP, listGudang &lG, adrGudang G, adrPenitip P) {
             tempG = tempG->next;
         }
     } else {
-        cout << "Slot Tersedia Gudang /" << G->info.nomor_gudang << "/ Habis \nSilahkan Input Di Gudang Lainnya" << endl;
+        cout << "Slot Tersedia Gudang '" << G->info.nomor_gudang << "' Habis \nSilahkan Input Di Gudang Lainnya" << endl;
     }
 } //G untuk data parent yang ingin ditambah relasinya; P untuk child yang akan direlasikan ke parent
 
@@ -887,7 +915,7 @@ void showRelasiPenitip(listPenitip lP, listGudang lG, adrPenitip P) {
 //
 //        }
         if (!find) {
-            cout << "Data Penitip /" << P->info.nama_penitip << "/ Belum Berelasi Dengan Gudang Manapun" << endl;
+            cout << "Data Penitip '" << P->info.nama_penitip << "' Belum Berelasi Dengan Gudang Manapun" << endl;
         }
 //        tempP = tempP->next;
 //    }
@@ -897,14 +925,14 @@ void showGudangPenitip(listGudang lG, adrPenitip P) {
     adrGudang G = lG.first;
     bool done = false;
     if (P == NULL) {
-        cout << "Data Penitip /" << P->info.nama_penitip << "/ Tidak Ditemukan" << endl;
+        cout << "Data Penitip '" << P->info.nama_penitip << "' Tidak Ditemukan" << endl;
     } else {
         while (G != NULL) {
             adrRelasi R = G->nextRelasi;
             while (R != NULL) {
                 if (R->nextPenitip == P) {
                     if (!done) {
-                        cout << "Gudang yang Berelasi Dengan /" << P->info.nama_penitip << "/ Ditemukan" << endl;
+                        cout << "Gudang yang Berelasi Dengan '" << P->info.nama_penitip << "' Ditemukan" << endl;
                         done = true;
                     }
                     cout << endl;
@@ -921,14 +949,14 @@ void showGudangPenitip(listGudang lG, adrPenitip P) {
 }
 void hitungRelasiGudang(listGudang lG) {
     adrGudang G = lG.first;
-    int i= 0;
     while (G != NULL) {
+        int i= 0;
         adrRelasi R = G->nextRelasi;
         while (R != NULL) {
             i++;
             R = R->nextRelasi;
         }
-        cout << "Relasi Nomor Gudang /" << G->info.nomor_gudang << "/ adalah " << i << endl;
+        cout << "Slot Terisi Nomor Gudang '" << G->info.nomor_gudang << "' adalah " << i << endl;
         G = G->next;
     }
 }
@@ -1001,6 +1029,6 @@ void editSlotGudang(listGudang &lG, adrPenitip P, adrPenitip newP) {
         cout << "Tidak Ada Data Yang Dapat Diganti" << endl;
     } else {
         cout << "Data Berhasil Diganti" << endl;
-        cout << "Sebanyak /" << i << "/ Data Diganti" << endl;
+        cout << "Sebanyak '" << i << "' Data Diganti" << endl;
     }
 }
