@@ -3,6 +3,8 @@
 #include <iostream>
 #include <cstdlib>
 #include <limits>
+#include <string>
+#include <conio.h>
 
 using namespace std;
 
@@ -53,7 +55,7 @@ struct listGudang {
 void clearScreen();
 void waitForEnter();
 void menu(listGudang &lG, listPenitip &lP);
-void mainMenu(char &n);
+void mainMenu(string &n);
 void menu_1(listGudang &lG, listPenitip &lP);
 void menu_1_insert(listGudang &lG);
 void menu_1_delete(listGudang &lG);
@@ -65,6 +67,7 @@ void menu_2_delete(listPenitip &lP);
 void menu_2_find(listPenitip &lP);
 void menu_2_show(listPenitip &lP);
 void menu_2_hitungRelasiPenitipTertentu(listPenitip &lP, listGudang &lG);
+void menu_2_hitungPenitipTakBerelasi(listPenitip &lP, listGudang &lG);
 void menu_3(listGudang &lG, listPenitip &lP);
 void menu_3_insert(listGudang &lG, listPenitip &lP);
 void menu_3_delete(listGudang &lG, listPenitip &lP);
@@ -72,9 +75,10 @@ void menu_3_find(listGudang &lG, listPenitip &lP);
 void menu_3_showPenitipGudangTertentu(listGudang &lG, listPenitip &lP);
 void menu_3_relasiPenitip(listGudang &lG, listPenitip &lP);
 void menu_3_gudangPenitip(listGudang &lG, listPenitip &lP);
-void menuGudang(char &n);
-void menuPenitip(char &n);
-void menuRelasi(char &n);
+void menu_3_editRelasi(listGudang &lG, listPenitip &lP);
+void menuGudang(string &n);
+void menuPenitip(string &n);
+void menuRelasi(string &n);
 adrGudang createNewGudang(gudang x);
 adrPenitip createNewPenitip(penitip x);
 adrRelasi createNewRelasi(adrPenitip P);
@@ -96,7 +100,7 @@ void showGudangPenitip(listGudang lG, adrPenitip P);
 void hitungRelasiGudang(listGudang lG);
 void hitungRelasiPenitipTertentu(listGudang lG, string nama_penitip);
 void hitungPenitipTakBerelasi(listPenitip lP, listGudang lG);
-void editSlotGudang(listGudang &lG, adrPenitip P, adrPenitip newP); // P untuk relasi child yang ingin diganti; newP untuk tujuan baru relasi yang diganti
+void editRelasi(listGudang &lG, adrPenitip P, adrPenitip newP); // P untuk relasi child yang ingin diganti; newP untuk tujuan baru relasi yang diganti
 
 
 #endif // TUBES_H_INCLUDED
