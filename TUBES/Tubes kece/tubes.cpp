@@ -84,7 +84,7 @@ void menu_1_insert(listGudang &lG) {
     if (cin.fail()) {
         cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        cout << "FUCK YOU" << endl;
+        cout << "Input Harus Integer" << endl;
         waitForEnter();
         return;
     }
@@ -93,7 +93,7 @@ void menu_1_insert(listGudang &lG) {
     if (cin.fail()) {
         cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        cout << "FUCK YOU" << endl;
+        cout << "Input Harus Integer" << endl;
         waitForEnter();
         return;
     }
@@ -104,7 +104,7 @@ void menu_1_insert(listGudang &lG) {
         if (cin.fail()) {
             cin.clear();
             cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            cout << "FUCK YOU" << endl;
+            cout << "Input Harus Integer" << endl;
             waitForEnter();
             return;
         }
@@ -143,7 +143,7 @@ void menu_1_delete(listGudang &lG) {
     if (cin.fail()) {
         cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        cout << "FUCK YOU" << endl;
+        cout << "Input Harus Integer" << endl;
         waitForEnter();
         return;
     }
@@ -162,7 +162,7 @@ void menu_1_find(listGudang &lG) {
     if (cin.fail()) {
         cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        cout << "FUCK YOU" << endl;
+        cout << "Input Harus Integer" << endl;
         waitForEnter();
         return;
     }
@@ -253,7 +253,7 @@ void menu_2_insert(listPenitip &lP) {
     if (cin.fail()) {
         cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        cout << "FUCK YOU" << endl;
+        cout << "Input Harus Integer" << endl;
         waitForEnter();
         return;
     }
@@ -461,7 +461,7 @@ void menu_3_insert(listGudang &lG, listPenitip &lP) {
     if (cin.fail()) {
         cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        cout << "FUCK YOU" << endl;
+        cout << "Input Harus Integer" << endl;
         waitForEnter();
         return;
     }
@@ -527,7 +527,7 @@ void menu_3_delete(listGudang &lG, listPenitip &lP) {
     if (cin.fail()) {
         cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        cout << "FUCK YOU" << endl;
+        cout << "Input Harus Integer" << endl;
         waitForEnter();
         return;
     }
@@ -579,7 +579,7 @@ void menu_3_find(listGudang &lG, listPenitip &lP) {
     if (cin.fail()) {
         cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        cout << "FUCK YOU" << endl;
+        cout << "Input Harus Integer" << endl;
         waitForEnter();
         return;
     }
@@ -640,7 +640,7 @@ void menu_3_showPenitipGudangTertentu(listGudang &lG, listPenitip &lP) {
     if (cin.fail()) {
         cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        cout << "FUCK YOU" << endl;
+        cout << "Input Harus Integer" << endl;
         waitForEnter();
         return;
     }
@@ -717,7 +717,7 @@ void menu_3_editRelasi(listGudang &lG, listPenitip &lP) {
     if (cin.fail()) {
         cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        cout << "FUCK YOU" << endl;
+        cout << "Input Harus Integer" << endl;
         waitForEnter();
         return;
     }
