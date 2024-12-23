@@ -294,10 +294,12 @@ void menu_2_delete(listPenitip &lP, listGudang &lG) {
     int i = 0;
     while (findPenitip(lP, P.nama_penitip, P.tanggal_masuk_barang) != NULL) {
         adrGudang G = lG.first;
-        while (G != NULL && findRelasi(G, findPenitip(lP, P.nama_penitip, P.tanggal_masuk_barang)) == NULL) {
+        while (G != NULL) {
+            if (findRelasi(G, findPenitip(lP, P.nama_penitip, P.tanggal_masuk_barang)) != NULL) {
+                deleteRelasi(lG, G, findPenitip(lP, P.nama_penitip, P.tanggal_masuk_barang));
+            }
             G = G->next;
         }
-        deleteRelasi(lG, G, findPenitip(lP, P.nama_penitip, P.tanggal_masuk_barang));
         deletePenitip(lP, P.nama_penitip, P.tanggal_masuk_barang);
         i++;
     }
