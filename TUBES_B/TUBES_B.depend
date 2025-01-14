@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1584205420 source:c:\users\lenovo\documents\tubes_b\main.cpp
+	<iostream>
+
+1584205420 source:c:\users\lenovo\onedrive - telkom university\tubes_b\main.cpp
+	<iostream>
+
+1736865844 source:d:\kuliahan banget\semester 3 masa ga ip 4 lagi\std khs\tubes_b\main.cpp
+	"rs.h"
+	<iostream>
+
+1736865639 d:\kuliahan banget\semester 3 masa ga ip 4 lagi\std khs\tubes_b\rs.h
+	<iostream>
+
+1736867826 source:d:\kuliahan banget\semester 3 masa ga ip 4 lagi\std khs\tubes_b\rs.cpp
+	"rs.h"
+

@@ -19,6 +19,7 @@ void insertNode_103032300101(adrNode &root, adrNode p);
 void DeleteNode_103032300101(adrNode &root, adrNode &p);
 void printInOrder_103032300101(adrNode root);
 adrNode findMin_103032300101(adrNode root);
+adrNode findMax_103032300101(adrNode root);
 
 
 #endif // TREE_H_INCLUDED

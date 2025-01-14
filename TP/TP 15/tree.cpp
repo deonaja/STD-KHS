@@ -30,30 +30,60 @@ void insertNode_103032300101(adrNode &root, adrNode p){
 }
 void DeleteNode_103032300101(adrNode &root, adrNode &p) {
     adrNode temp;
-    if (root == NULL){
-        cout << "Node not found" << endl;
-    }else if (p->info < root->info){
-        DeleteNode_103032300101(root->left, p);
-    }else if (p->info > root->info){
+    cout << root->info << "-\n";
+    if (root == NULL) {
+        cout << "TREE KOSONG" << endl;
+    } else if (root->info < p->info) {
         DeleteNode_103032300101(root->right, p);
-    }else{
-        if (root->left == NULL && root->right == NULL){
+    } else if (root->info > p->info) {
+        DeleteNode_103032300101(root->left, p);
+    } else {
+        if (root->left == NULL && root->right == NULL) {
             delete root;
             root = NULL;
-        }else if (root->left == NULL){
-            temp = root;
-            root = root->right;
-            delete temp;
-        }else if (root->right == NULL){
+        } else if (root->right == NULL) {
             temp = root;
             root = root->left;
             delete temp;
-        }else{
-            temp = findMin_103032300101(root->right);
+        } else if (root->left == NULL) {
+            temp = root;
+            root = root->right;
+            delete temp;
+        } else {
+            temp = findMax_103032300101(root->left);
+            cout << temp->info << "=";
             root->info = temp->info;
-            DeleteNode_103032300101(root->right, temp);
+            DeleteNode_103032300101(root->left, temp);
         }
     }
+
+//    adrNode temp;
+//    cout << root->info << "-";
+//    if (root == NULL){
+//        cout << "Node not found" << endl;
+//    }else if (p->info < root->info){
+//        DeleteNode_103032300101(root->left, p);
+//    }else if (p->info > root->info){
+//        DeleteNode_103032300101(root->right, p);
+//    }else{
+//        if (root->left == NULL && root->right == NULL){
+//            delete root;
+//            root = NULL;
+//        }else if (root->left == NULL){
+//            temp = root;
+//            root = root->right;
+//            delete temp;
+//        }else if (root->right == NULL){
+//            temp = root;
+//            root = root->left;
+//            delete temp;
+//        }else{
+//            temp = findMin_103032300101(root->right);
+//            cout << temp->info << "=";
+//            root->info = temp->info;
+//            DeleteNode_103032300101(root->right, temp);
+//        }
+//    }
 }
 void printInOrder_103032300101(adrNode root) {
     if (root != NULL) {
@@ -68,6 +98,16 @@ adrNode findMin_103032300101(adrNode root) {
     }
     while (root->left != NULL) {
         root = root->left;
+    }
+    return root;
+}
+
+adrNode findMax_103032300101(adrNode root) {
+    if (root == NULL) {
+        return root;
+    }
+    while (root->right != NULL) {
+        root = root->right;
     }
     return root;
 }
